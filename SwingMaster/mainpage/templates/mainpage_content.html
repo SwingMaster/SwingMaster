@@ -1,0 +1,17 @@
+<div class="rank">
+    <img class="crown" src="../static/assets/img/crown.png">
+    <h5>배병규님</h5>
+</div>
+<table border="1" bordercolor="#E5E4E4" width="300px" height="300px" align="center" frame=void
+>
+    <th bgcolor="#E5E4E4">No.</th>
+    <th bgcolor="#E5E4E4">Name</th>
+    <th bgcolor="#E5E4E4">Value</th>
+    {% for rank in ranking %}
+    <tr>
+        {% for i in rank %}
+        <td>{{ i }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
