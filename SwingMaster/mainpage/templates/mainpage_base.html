@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MainPage</title>
+    {% block css %}
+        <link href="{% static 'css_mainpage_dir/styling_mainpage.css' %}" rel="stylesheet" />
+    {% endblock css %}
+</head>
+<body>
+     <div class="entire-box">
+        <div class="header">
+            {% include 'mainpage_topbar.html' %}
+        </div>
+        <div class="content">
+            {% include 'mainpage_content.html' %}
+        </div>
+        <div class="footer">
+            {% include 'mainpage_footer.html' %}
+        </div>
+     </div>
+</body>
+</html>
