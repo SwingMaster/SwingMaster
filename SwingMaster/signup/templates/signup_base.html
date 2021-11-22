@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
+    <title>SignUp</title>
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'css_signup_dir/styling_signup.css' %}"/>
+    {% endblock css %}
+</head>
+<body>
+    <div class="entire-box">
+        <div class="header">
+            {% include 'signup_topbar.html' %}
+        </div>
+        <div class="content">
+            {% include 'signup_content.html' %}
+        </div>
+        <div class="footer">
+            {% include 'signup_footer.html' %}
+        </div>
+    </div>
+</body>
+</html>
