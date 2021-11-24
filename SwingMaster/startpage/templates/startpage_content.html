@@ -1,14 +1,18 @@
-<div class="login-form">
-    <div class="id-form">
-        <span class="login-text">ID</span>
-        <input type="text" class="login-input" id="id-input" height="40px" placeholder="내용을 입력해주세요">
-    </div>
-    <div class="passwd-form">
-        <span class="login-text">PW</span>
-        <input type="password" class="login-input" id="passwd-input" height="40px" placeholder="내용을 입력해주세요">
-    </div>
-</div>
+<from action="" method="POST">
+    {% csrf_token %}
+    <div class="login-form">
+        {for form in forms %}
+        <div class="id-form">
+            <label class="login-text">{{ form.label }}</label>
+            {{ form }}
+        </div>
+        {% endfor %}
 
-<button class="login-btn" onclick = "location.href = 'mainpage'" type="submit">
-    <b style="color:#FFFFFF">로그인</b>
-</button>
+        {% if error %}
+        {{ error }}
+        {% endif %}
+    </div>
+
+    <button class="login-btn" type="submit" name="login_submit" value="login">
+        <b style="color:#FFFFFF">로그인</b>
+    </button>
