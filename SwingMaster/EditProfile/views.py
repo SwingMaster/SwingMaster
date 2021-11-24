@@ -3,4 +3,9 @@ from django.shortcuts import render, redirect
 # Create your views here.
 
 def index(request):
-    return render(request, 'EditProfile_base.html')
+    login_session = request.session.get('login_session', '')
+
+    if login_session == '':
+        return redirect('/')
+    else:
+        return render(request, 'EditProfile_base.html')

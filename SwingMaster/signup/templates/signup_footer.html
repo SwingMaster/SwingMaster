@@ -1,3 +1,9 @@
-<button class="footer-button" onclick = "location.href = '../startpage'" type="button" >
+<button class="footer-button" type="submit" >
     <b style="color:#FFFFFF;" >가입완료</b>
 </button>
+
+{% if messages %}
+{% for message in messages %}
+    <div class="alert {{ message.tags }} ">{{ message }}</div>
+{% endfor %}
+{% endif %}

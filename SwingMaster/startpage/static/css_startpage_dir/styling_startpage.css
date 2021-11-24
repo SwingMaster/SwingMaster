@@ -34,7 +34,7 @@ html, body {
 }
 
 .id-form{
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 input{
@@ -102,4 +102,3 @@ input::-webkit-input-placeholder {
     height: 100%;
   }
 }
-
