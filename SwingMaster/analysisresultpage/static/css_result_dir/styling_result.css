@@ -70,11 +70,11 @@
 }
 
 .btn1:hover{
-  box-shadow:50px 0 0 0 rgba(0,0,0,0.5) inset;
+  box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
 }
 
 .btn2:hover{
-  box-shadow:50px 0 0 0 rgba(0,0,0,0.5) inset;
+  box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
 }
 .evaluate{
     position: relative;
