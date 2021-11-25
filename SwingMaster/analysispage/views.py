@@ -35,7 +35,7 @@ class VideoCamera(object):
             if self.count != time.strftime('%H', time.localtime(time.time())):  # 시간이 바뀌면 영상파일을 새로 만든다. (시간으로 감지)
                 self.count = time.strftime('%H', time.localtime(time.time()))
 
-                self.path = "C:\AnalysisPage\SwingMaster\SwingMaster\SwingMaster\output\\"
+                self.path = "./"
                 self.out = cv2.VideoWriter(self.path + time.strftime('%Y-%m-%d %Hh %Mm', time.localtime(time.time())) + '.avi', self.codec, self.fc, (int(self.video.get(3)), int(self.video.get(4))))
 
             (self.ret, self.frame) = self.video.read()
