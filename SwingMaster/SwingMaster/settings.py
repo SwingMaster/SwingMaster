@@ -11,16 +11,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--5gnu79s9dlt5=pzwo&@3_jwf84ru6d8nnpz*)=1f&dn8quhts'
+SECRET_KEY = 'django-insecure-=u8v^w11v3j9)n$(rouw2l6_t6oe-(a2c^b4@(s3_7$idje&ku'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'analysispage.apps.AnalysispageConfig'
+    'analysispage.apps.AnalysispageConfig',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +51,7 @@ ROOT_URLCONF = 'SwingMaster.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,6 +115,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# STATICFILES_DIRS = [os.path.join(APPS_DIR , "static")]
+# STATICFILES_FINDERS = ["django.contrib.staticfiles.finders.FileSystemFinder",
+#                     "django.contrib.staticfiles.finders.AppDirectoriesFinder",]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

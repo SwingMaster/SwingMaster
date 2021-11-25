@@ -36,24 +36,29 @@
   position: relative;
 }
 
-.box{
-    width: 230px;
-    height : 340px;
-    margin-left : 70px;
-    margin-top : 10px;
-    margin-bottom: 20px;
-    background-color: rgba(0, 0, 100, 0.1);
+#video-output{
+  margin-top: 5%;
 }
 
-.recordBtn{
-    position: relative;
-    left: 75px;"
-    background-color: #FFFFFF;
-    background-color:transparent;
-    border:0px transparent solid;
+.footer-button{
+  width: 100px;
+  height: 40px;
+  color: white;
+  background: #3599db;
+  border:0px transparent solid;
+  border-radius: 10px;
+  margin-top: 5%;
 }
-.countdown{
-    position: relative;
-    left: 150px;
-    font-size: 40px;
+
+.footer-button:hover{
+  box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
 }
+
+#restart-btn{
+  margin-left : 4%;
+  margin-right: 4%;
+}
+#start-stop-btn{
+  margin-right: 4%;
+}
+
