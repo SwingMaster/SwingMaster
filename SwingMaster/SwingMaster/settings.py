@@ -77,10 +77,14 @@ WSGI_APPLICATION = 'SwingMaster.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
+DATABASES = { # 이 소스가 mariadb와 연동할 수 있게 해주는 소스
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'SwingMaster',
+        'USER' : 'root',
+        'PASSWORD' : 'SwingMaster',
+        'HOST' : '52.79.212.88',
+        'PORT' : '3306'
     }
 }
 
