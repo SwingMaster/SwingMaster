@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
 from startpage import views as views
 
 urlpatterns = [
@@ -25,4 +26,10 @@ urlpatterns = [
     path('signup/', include('signup.urls')),
     path('startpage/', include('startpage.urls')),
     path('EditProfile/', include('EditProfile.urls')),
+=======
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('camera/', include('analysispage.urls')),
+>>>>>>> origin/cjh_analysispage
 ]
