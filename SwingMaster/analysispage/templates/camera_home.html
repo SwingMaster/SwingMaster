@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+        <title>Title</title>
+        <script src="https://kit.fontawesome.com/ed737f01fa.js" crossorigin="anonymous"></script>
+        {% block css %}
+        <link href="{% static 'css_video_dir/styling_video.css' %}" rel="stylesheet" />
+        {% endblock css %}
+    </head>
+    <body>
+        <div class="entire-box">
+            <div class="header">
+                {% include 'camera_topbar.html' %}
+            </div>
+            <div class="content">
+                <canvas class="box"></canvas>
+                <div class="recordBtn"><button class="recordBtn" onclick="location.href = 'http://127.0.0.1:8000/camera/camera'"}><i class="far fa-dot-circle fa-4x"></i></button></div>
+            </div>
+        </div>
+    </body>
+</html>

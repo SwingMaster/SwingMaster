@@ -6,6 +6,9 @@ import time
 import threading
 
 def index(request):
+    return render(request, 'camera_home.html')
+
+def index2(request):
     return render(request, 'camera_base.html')
 
 class VideoCamera(object):
@@ -32,7 +35,8 @@ class VideoCamera(object):
             if self.count != time.strftime('%H', time.localtime(time.time())):  # 시간이 바뀌면 영상파일을 새로 만든다. (시간으로 감지)
                 self.count = time.strftime('%H', time.localtime(time.time()))
 
-                self.out = cv2.VideoWriter(time.strftime('%Y-%m-%d %Hh %Mm', time.localtime(time.time())) + '.avi', self.codec, self.fc, (int(self.video.get(3)), int(self.video.get(4))))
+                self.path = "C:\AnalysisPage\SwingMaster\SwingMaster\SwingMaster\output\\"
+                self.out = cv2.VideoWriter(self.path + time.strftime('%Y-%m-%d %Hh %Mm', time.localtime(time.time())) + '.avi', self.codec, self.fc, (int(self.video.get(3)), int(self.video.get(4))))
 
             (self.ret, self.frame) = self.video.read()
             self.now = time.time()
@@ -40,15 +44,12 @@ class VideoCamera(object):
             cv2.putText(self.frame, text='{}s'.format(30 - self.diff), org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2.5, color=(255, 255, 255), thickness=7)
 
             if 30 - self.diff == 0:
-                return redirect("#")
+                break
 
             if self.ret == True:
-                #cv2.imshow('Record&Save', self.frame)
                 self.out.write(self.frame)
             else:
-                return redirect("#")
-
-        # return redirect("http://www.naver.com")
+                break
 
 def gen(camera):
     while True:

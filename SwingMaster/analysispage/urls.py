@@ -5,5 +5,6 @@ app_name = 'camera'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('camera', views.detect, name="detect"),
+    path('camera', views.index2, name='index2'),
+    path('camera/camera', views.detect, name="detect"),
 ]
