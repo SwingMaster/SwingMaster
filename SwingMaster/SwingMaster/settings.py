@@ -11,53 +11,18 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-<<<<<<< HEAD
-<<<<<<< HEAD
 import os
-=======
->>>>>>> origin/cjh_analysispage
-=======
->>>>>>> origin/cjh_analysisresultpage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/cjh_analysispage
-=======
-
->>>>>>> origin/cjh_analysisresultpage
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-<<<<<<< HEAD
-<<<<<<< HEAD
 SECRET_KEY = 'django-insecure-=u8v^w11v3j9)n$(rouw2l6_t6oe-(a2c^b4@(s3_7$idje&ku'
-=======
-SECRET_KEY = 'django-insecure--5gnu79s9dlt5=pzwo&@3_jwf84ru6d8nnpz*)=1f&dn8quhts'
->>>>>>> origin/cjh_analysispage
-=======
-SECRET_KEY = 'django-insecure-au82ws3w^4+nv+6@y^^s_kosplul6_yhy&h=)w2*7o+tk1-s01'
->>>>>>> origin/cjh_analysisresultpage
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ALLOWED_HOSTS = ["*"]
-=======
 ALLOWED_HOSTS = ['*']
 
->>>>>>> origin/cjh_analysispage
-=======
-ALLOWED_HOSTS = ['*']
-
->>>>>>> origin/cjh_analysisresultpage
 
 # Application definition
 
@@ -68,19 +33,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
-<<<<<<< HEAD
     'mypage.apps.MypageConfig',
     'mainpage.apps.MainpageConfig',
     'signup.apps.SignupConfig',
     'startpage.apps.StartpageConfig',
     'EditProfile.apps.EditprofileConfig',
-=======
-    'analysispage.apps.AnalysispageConfig'
->>>>>>> origin/cjh_analysispage
-=======
+    'analysispage.apps.AnalysispageConfig',
     'analysisresultpage.apps.AnalysisresultpageConfig',
->>>>>>> origin/cjh_analysisresultpage
 ]
 
 MIDDLEWARE = [
@@ -98,15 +57,7 @@ ROOT_URLCONF = 'SwingMaster.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-<<<<<<< HEAD
-<<<<<<< HEAD
         'DIRS': [BASE_DIR / 'templates'],
-=======
-        'DIRS': [],
->>>>>>> origin/cjh_analysispage
-=======
-        'DIRS': [],
->>>>>>> origin/cjh_analysisresultpage
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,8 +76,6 @@ WSGI_APPLICATION = 'SwingMaster.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 DATABASES = { # 이 소스가 mariadb와 연동할 수 있게 해주는 소스
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -138,23 +87,6 @@ DATABASES = { # 이 소스가 mariadb와 연동할 수 있게 해주는 소스
     }
 }
 
-LOGIN_REDIRECT_URL = '../mainpage'
-
-LOGOUT_REDIRECT_URL = '/'
-=======
-=======
->>>>>>> origin/cjh_analysisresultpage
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-<<<<<<< HEAD
->>>>>>> origin/cjh_analysispage
-=======
->>>>>>> origin/cjh_analysisresultpage
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -193,17 +125,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-<<<<<<< HEAD
-<<<<<<< HEAD
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # STATICFILES_DIRS = [os.path.join(APPS_DIR , "static")]
 # STATICFILES_FINDERS = ["django.contrib.staticfiles.finders.FileSystemFinder",
 #                     "django.contrib.staticfiles.finders.AppDirectoriesFinder",]
-=======
->>>>>>> origin/cjh_analysispage
-=======
->>>>>>> origin/cjh_analysisresultpage
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

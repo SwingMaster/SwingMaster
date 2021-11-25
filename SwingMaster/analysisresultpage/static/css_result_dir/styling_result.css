@@ -50,9 +50,6 @@
     position: relative;
     left: 15%;
 }
-.btn:hover{
-    box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
-}
 
 .btn1{
     margin-right: 40px;
@@ -63,6 +60,7 @@
     border-radius: 10px;
     border:0px transparent solid;
 }
+
 .btn2{
     width: 100px;
     height: 40px;
@@ -71,6 +69,13 @@
     border:0px transparent solid;
 }
 
+.btn1:hover{
+  box-shadow:50px 0 0 0 rgba(0,0,0,0.5) inset;
+}
+
+.btn2:hover{
+  box-shadow:50px 0 0 0 rgba(0,0,0,0.5) inset;
+}
 .evaluate{
     position: relative;
     left: 30%;
