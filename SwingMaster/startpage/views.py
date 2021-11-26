@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import LoginForm
+from bs4 import BeautifulSoup
 
 # Create your views here.
 
@@ -25,5 +26,6 @@ def index(request):
             context['forms'] = loginform
             if loginform.errors:
                 for value in loginform.errors.values():
-                    context['error'] = value
+                    soup = BeautifulSoup('<html>'+str(value)+'</html>')
+                    context['error'] = soup.get_text()
         return render(request, 'startpage_base.html', context)

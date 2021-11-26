@@ -64,6 +64,16 @@
   box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
 }
 
+.signup_alert{
+  text-align:center;
+  margin: 0 auto;
+  width: 300px;
+  height: 40px;
+  background: #3599db;
+  border:0px transparent solid;
+  border-radius: 10px;
+}
+
 @media screen and (max-width:899px) {
   .entire-box{
     width: 100%;
