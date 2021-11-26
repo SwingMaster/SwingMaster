@@ -26,6 +26,6 @@ def index(request):
             context['forms'] = loginform
             if loginform.errors:
                 for value in loginform.errors.values():
-                    soup = BeautifulSoup('<html>'+str(value)+'</html>')
+                    soup = BeautifulSoup('<html>'+str(value)+'</html>', 'lxml')
                     context['error'] = soup.get_text()
         return render(request, 'startpage_base.html', context)
