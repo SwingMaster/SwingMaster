@@ -21,6 +21,9 @@
         <div class="footer">
             {% include 'startpage_footer.html' %}
         </div>
+        {% if error %}
+        {{error}}
+        {% endif %}
     </div>
 </body>
 </html>
