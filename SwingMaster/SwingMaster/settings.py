@@ -81,7 +81,7 @@ DATABASES = { # 이 소스가 mariadb와 연동할 수 있게 해주는 소스
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'SwingMaster',
         'USER' : 'root',
-        'PASSWORD' : 'SwingMaster',
+        'PASSWORD' : '0000',
         'HOST' : '52.79.212.88',
         'PORT' : '3306'
     }
