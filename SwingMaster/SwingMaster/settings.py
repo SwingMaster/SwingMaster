@@ -33,13 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mypage.apps.MypageConfig',
-    'mainpage.apps.MainpageConfig',
-    'signup.apps.SignupConfig',
-    'startpage.apps.StartpageConfig',
-    'EditProfile.apps.EditprofileConfig',
     'analysispage.apps.AnalysispageConfig',
-    'analysisresultpage.apps.AnalysisresultpageConfig',
 ]
 
 MIDDLEWARE = [
@@ -76,14 +70,10 @@ WSGI_APPLICATION = 'SwingMaster.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = { # 이 소스가 mariadb와 연동할 수 있게 해주는 소스
+DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'SwingMaster',
-        'USER' : 'root',
-        'PASSWORD' : 'SwingMaster',
-        'HOST' : '52.79.212.88',
-        'PORT' : '3306'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
