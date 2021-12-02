@@ -1,0 +1,15 @@
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="login-form">
+        {% for form in forms %}
+        <div class="id-form">
+            <label class="login-text">{{ form.label }}</label>
+            {{ form }}
+        </div>
+        {% endfor %}
+    </div>
+
+    <button class="login-btn"  type="submit" name="login_submit" value="login">
+        <b style="color:#FFFFFF">로그인</b>
+    </button>
+</form>

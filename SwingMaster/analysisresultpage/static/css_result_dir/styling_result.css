@@ -1,0 +1,88 @@
+.entire-box{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 380px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  test-align: center;
+}
+
+.dark-blue-background {
+  background: #409acb;
+  width: 370px;
+  height: 53px;
+  z-index: 3;
+}
+
+.dark-blue-background .back-arrow{
+  color:white;
+  position: relative;
+  left: 5%;
+  top: 15%;
+}
+
+.dark-blue-background .result-font {
+  font-size: 28px;
+  font-family: "Headline R";
+  color: rgb(255, 255, 255);
+  line-height: 1.2;
+  text-align: center;
+  -moz-transform: matrix( 1.63398320585301,0,0,1.72757105285814,0,0);
+  -webkit-transform: matrix( 1.63398320585301,0,0,1.72757105285814,0,0);
+  -ms-transform: matrix( 1.63398320585301,0,0,1.72757105285814,0,0);
+  left: 25%;
+  top: 20%;
+  position: relative;
+}
+
+
+.box{
+    width: 230px;
+    height : 340px;
+    margin-left : 70px;
+    margin-top : 10px;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
+}
+
+.btn{
+    position: relative;
+    left: 15%;
+}
+
+.btn1{
+    margin-right: 40px;
+    left : 10opx;
+    width: 100px;
+    height: 40px;
+    background-color : #409acb;
+    border-radius: 10px;
+    border:0px transparent solid;
+}
+
+.btn2{
+    width: 100px;
+    height: 40px;
+    background-color : #409acb;
+    border-radius: 10px;
+    border:0px transparent solid;
+}
+
+.btn1:hover{
+  box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
+}
+
+.btn2:hover{
+  box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
+}
+.evaluate{
+    position: relative;
+    left: 30%;
+    font-size: 30px;
+}
+.score{
+    position: relative;
+    left: 35%;
+    font-size: 50px;
+}
