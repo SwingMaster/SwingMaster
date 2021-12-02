@@ -1,10 +1,9 @@
 from django.urls import path
 from . import views
 
-app_name = 'camera'
+app_name = 'analysispage'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('camera', views.index2, name='index2'),
-    path('camera/camera', views.detect, name="detect"),
+    path('file_upload', views.file_upload, name="file_upload"),
 ]
