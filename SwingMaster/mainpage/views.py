@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-
-# Create your views here.
+from signup.models import User
 
 def index(request):
     login_session = request.session.get('login_session', '')
+    name = User.objects.get(user_id=login_session)
 
     if login_session == '':
         return redirect('/')
@@ -16,9 +16,10 @@ def index(request):
             c = 90+i
             ranking.append([a,b,c])
 
-        result = {'ranking':ranking}
+        result = {'ranking':ranking, 'name': name}
 
         return render(request, 'mainpage_base.html', result)
+
 
 def logout(request):
     request.session.flush()

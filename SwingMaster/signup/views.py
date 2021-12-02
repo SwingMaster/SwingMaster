@@ -32,6 +32,9 @@ def index(request):
         elif user_pw != user_pw_confirm:
             messages.warning(request, '비밀번호 불일치')
             return redirect('./')
+        elif len(user_pw) < 8:
+            messages.warning(request, '비밀번호 8자 미만')
+            return redirect('./')
         elif '@' not in user_email or '.' not in user_email:
             messages.warning(request, '이메일 형식이 잘못됨')
             return redirect('./')

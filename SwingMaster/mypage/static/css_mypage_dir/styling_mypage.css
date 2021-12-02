@@ -1,3 +1,5 @@
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+
 .entire-box{
   position: absolute;
   left: 50%;
@@ -24,14 +26,14 @@
 
 .dark-blue-background .mypage-font {
   font-size: 28px;
-  font-family: "Headline R";
+  font-family: 'Hanna', sans-serif;
   color: rgb(255, 255, 255);
   line-height: 1.2;
   text-align: center;
   -moz-transform: matrix( 1.63398320585301,0,0,1.72757105285814,0,0);
   -webkit-transform: matrix( 1.63398320585301,0,0,1.72757105285814,0,0);
   -ms-transform: matrix( 1.63398320585301,0,0,1.72757105285814,0,0);
-  left: 25%;
+  left: 28%;
   top: 20%;
   position: relative;
 }
@@ -63,15 +65,15 @@
 
 .white-blue-background .name-font {
   font-size: 16px;
-  font-family: "Sans-serif";
-  color: rgb(0, 0, 0);
+  font-family: 'Hanna', sans-serif;
+  color: #FFFFFF;
   line-height: 1.2;
   text-align: center;
   -moz-transform: matrix( 0.98635307369746,0,0,1.1346137468578,0,0);
   -webkit-transform: matrix( 0.98635307369746,0,0,1.1346137468578,0,0);
   -ms-transform: matrix( 0.98635307369746,0,0,1.1346137468578,0,0);
   position: absolute;
-  left: 43%;
+  left: 41%;
   top: 80%;
   z-index: 15;
 }

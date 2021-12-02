@@ -1,9 +1,9 @@
 <div class="section">
     <video id="video-output" autoplay playsinline></video>
     <br />
-    <button class="footer-button" id="restart-btn" onclick="location.href='../camera'">다시 촬영</button>
-    <input type="button" class="footer-button" id="start-stop-btn" value="녹화 시작" onclick="Buttontoggle();">
-    <button class="footer-button" id="captureFrame">분석 시작</button>
+    <button class="footer-button" id="restart-btn" onclick="location.href='../camera'"><b>다시 촬영</b></button>
+    <input type="button" class="footer-button" id="start-stop-btn" value="녹화 시작" onclick="operateRecording();" style="font-weight:bold;">
+    <button class="footer-button" id="captureFrame"><b>분석 시작</b></button>
 </div>
 
 <script>
@@ -32,7 +32,7 @@
             console.error("Oops. Something is broken.", error);
         });
 
-    function Buttontoggle(){
+    function operateRecording(){
         if (startstopBtn.value == "녹화 시작"){
             console.log("start");
             let recordedChunks = [];
@@ -156,9 +156,4 @@
             });
         }
     });
-
-
-
-
-
 </script>
