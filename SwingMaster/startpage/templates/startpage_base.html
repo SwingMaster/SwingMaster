@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=yes">
+    <title>login</title>
+    {% block css %}
+        <link href="{% static 'css_startpage_dir/styling_startpage.css' %}" rel="stylesheet" />
+    {% endblock css %}
+</head>
+<body>
+    <div class="entire-box">
+        <div class="header">
+            {% include 'startpage_topbar.html' %}
+        </div>
+        <div class="content">
+            {% include 'startpage_content.html' %}
+        </div>
+        <div class="footer">
+            {% include 'startpage_footer.html' %}
+        </div>
+        {% if error %}
+        <div class="login_alert"><b style="color:#FFFFFF">{{error}}</b></div>
+        {% endif %}
+    </div>
+</body>
+</html>

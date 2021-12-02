@@ -1,0 +1,164 @@
+<div class="section">
+    <video id="video-output" autoplay playsinline></video>
+    <br />
+    <button class="footer-button" id="restart-btn" onclick="location.href='../camera'">다시 촬영</button>
+    <input type="button" class="footer-button" id="start-stop-btn" value="녹화 시작" onclick="Buttontoggle();">
+    <button class="footer-button" id="captureFrame">분석 시작</button>
+</div>
+
+<script>
+    var constraints = { video: { facingMode: "environment" , width: 370, height: 450 }, audio: false};
+
+    // Define constants
+    const videoOutput = document.getElementById('video-output');
+    const startstopBtn = document.getElementById('start-stop-btn');
+
+    let mediaStream = null;
+    let mediaRecorder = null;
+    let recordedMediaURL = null;
+
+    navigator.mediaDevices
+        .getUserMedia(constraints)
+        .then(function(newMediaStream){
+        mediaStream = newMediaStream;
+
+        track = mediaStream.getTracks()[0];
+        videoOutput.srcObject = mediaStream;
+        videoOutput.onloadedmetadata = function (e) {
+            videoOutput.play();
+            };
+        })
+        .catch(function(error) {
+            console.error("Oops. Something is broken.", error);
+        });
+
+    function Buttontoggle(){
+        if (startstopBtn.value == "녹화 시작"){
+            console.log("start");
+            let recordedChunks = [];
+
+            mediaRecorder = new MediaRecorder(mediaStream, {
+              mimeType: 'video/webm; codecs=vp9',
+            });
+
+            mediaRecorder.ondataavailable = function(event){
+                if(event.data && event.data.size > 0){
+                    recordedChunks.push(event.data);
+                }
+            };
+
+            mediaRecorder.onstop = function(){
+                if (recordedMediaURL) {
+                  URL.revokeObjectURL(recordedMediaURL);
+                }
+
+                const blob = new Blob(recordedChunks, {type: 'video/webm;'});
+                recordedMediaURL = URL.createObjectURL(blob);
+            };
+
+            mediaRecorder.start();
+            console.log("======");
+            startstopBtn.value = "녹화 종료";
+        }
+        else if (startstopBtn.value == "녹화 종료"){
+            console.log("stop");
+            if(mediaRecorder){
+                console.log("-----");
+                mediaRecorder.stop();
+            }
+        }
+    }
+
+    async function extractFramesFromVideo(videoUrl, fps=5) {
+        return new Promise(async (resolve) => {
+        // fully download it first (no buffering):
+        let videoBlob = await fetch(videoUrl).then(r => r.blob());
+        let videoObjectUrl = URL.createObjectURL(videoBlob);
+        let video = document.createElement("video");
+
+        let seekResolve;
+        video.addEventListener('seeked', async function() {
+            if(seekResolve) seekResolve();
+        });
+
+        video.addEventListener('loadeddata', async function() {
+            let canvas = document.createElement('canvas');
+            let context = canvas.getContext('2d');
+            let [w, h] = [video.videoWidth, video.videoHeight]
+            canvas.width =  w;
+            canvas.height = h;
+
+            let frames = [];
+            let interval = 1 / fps;
+            let currentTime = 0;
+            let duration = 30;
+            while(currentTime < duration) {
+                video.currentTime = currentTime;
+                await new Promise(r => seekResolve=r);
+
+                context.drawImage(video, 0, 0, w, h);
+                let base64ImageData = canvas.toDataURL();
+
+                frames.push(base64ImageData);
+
+                currentTime += interval;
+            }
+            resolve(frames);
+        });
+
+        // set video src *after* listening to events in case it loads so fast
+        // that the events occur before we were listening.
+        video.src = videoObjectUrl;
+
+      });
+    }
+
+    function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+        var byteString;
+        if (dataURI.split(',')[0].indexOf('base64') >= 0){
+            byteString = atob(dataURI.split(',')[1]);
+        }
+        else{
+            byteString = unescape(dataURI.split(',')[1]);
+        }
+        // 마임타입 추출
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        // write the bytes of the string to a typed array
+        var ia = new Uint8Array(byteString.length);
+        for (var i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+        return new Blob([ia], {type:mimeString});
+    }
+
+    const frameCapture = document.getElementById('captureFrame');
+
+    frameCapture.addEventListener("click", async function(){
+        if (recordedMediaURL) {
+            let frames = await extractFramesFromVideo(recordedMediaURL);
+            var formdata = new FormData();
+                for (var i = 0; i < frames.length; i++){
+                    let data = dataURItoBlob(frames[i]);
+                    formdata.append('image'+String(i),data,'file'+String(i)+'.png');
+                }
+                $.ajax({
+                    url: 'file_upload',
+                    type: 'POST',
+                    //async: true,
+                    //cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: formdata,
+                    success: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+    });
+
+
+
+
+
+</script>

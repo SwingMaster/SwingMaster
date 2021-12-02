@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=yes" name="viewport" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <title>SignUp</title>
+    {% block css %}
+        <link rel="stylesheet" href="{% static 'css_signup_dir/styling_signup.css' %}"/>
+    {% endblock css %}
+</head>
+<body>
+    <div class="entire-box">
+        <div class="header">
+            {% include 'signup_topbar.html' %}
+        </div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="content">
+                {% include 'signup_content.html' %}
+            </div>
+            <div class="footer">
+                {% include 'signup_footer.html' %}
+            </div>
+        </form>
+        {% if messages %}
+        {% for message in messages %}
+            <div style="background: #3599db;
+            width: 250px; height: 30px;
+            border:0px transparent solid;
+            border-radius: 10px;
+            text-align:center;
+            margin-top: 10px;
+            "><b style="color:#FFFFFF">{{ message }}</b></div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</body>
+<script>
+    function project_id_check(){
+        $('#user_id').change(function () {
+            $('#user_id').attr("check_result", "fail");
+          })
+
+        var user_id=$("#user_id").val()
+
+        $.ajax({
+            url: 'checkDuplicatedId',
+            data: {'user_id': user_id},
+            datatype: 'json',
+
+            success: function (data) {
+
+              // 중복 있음
+              if (data['duplicate'] == "fail") {
+                //중복인 경우 처리
+                return alert("아이디 중복!");
+
+              } else { // 중복 없음
+                //중복 아닌 경우 처리
+                return alert("사용할 수 있는 아이디 입니다.");
+              }
+            }
+          });
+    }
+
+    function project_nickname_check(){
+        $('#user_nickname').change(function () {
+            $('#user_nickname').attr("check_result", "fail");
+          })
+
+        var user_nickname=$("#user_nickname").val()
+
+        $.ajax({
+            url: 'checkDuplicatedNickname',
+            data: {'user_nickname': user_nickname},
+            datatype: 'json',
+
+            success: function (data) {
+
+              // 중복 있음
+              if (data['duplicate'] == "fail") {
+                //중복인 경우 처리
+                return alert("닉네임 중복!");
+
+              } else { // 중복 없음
+                //중복 아닌 경우 처리
+                return alert("사용할 수 있는 닉네임 입니다.");
+              }
+            }
+          });
+    }
+</script>
+</html>
