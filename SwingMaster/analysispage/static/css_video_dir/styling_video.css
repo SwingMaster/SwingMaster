@@ -38,25 +38,19 @@
   position: relative;
 }
 
-#video-output{
-  margin-top: 5%;
+.empty-box{
+    width: 230px;
+    height : 340px;
+    margin-left : 70px;
+    margin-top : 25px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 100, 0.1);
 }
 
-.footer-button{
-  width: 100px;
-  height: 40px;
-  color: white;
-  background: #3599db;
-  border:0px transparent solid;
-  border-radius: 10px;
-  margin-top: 5%;
+.record-button{
+    position: relative;
+    left: 75px;"
+    background-color: #FFFFFF;
+    background-color:transparent;
+    border:0px transparent solid;
 }
-
-.footer-button:hover{
-  box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
-}
-
-#restart-btn{
-  margin-left : 8%;
-}
-

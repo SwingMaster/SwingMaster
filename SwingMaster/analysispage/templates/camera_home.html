@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+        <title>Title</title>
+        <script src="https://kit.fontawesome.com/ed737f01fa.js" crossorigin="anonymous"></script>
+        {% block css %}
+        <link href="{% static 'css_video_dir/styling_video.css' %}" rel="stylesheet" />
+        {% endblock css %}
+    </head>
+    <body>
+        <div class="entire-box">
+            <div class="header">
+                <div class="dark-blue-background">
+                    <a class="back-arrow" href="../mainpage"><i class="fas fa-arrow-left fa-1x"></i></a>
+                    <span class="video-font">
+                        촬영하기
+                    </span>
+                </div>
+            </div>
+            <div class="content">
+                <p>서 있으세요!</p>
+
+<!--                <canvas class="empty-box"></canvas>-->
+                <div class="record-button"><button class="record-button" onclick="location.href = '../camera/startCamera'"}><i class="far fa-dot-circle fa-4x"></i></button></div>
+            </div>
+        </div>
+    </body>
+</html>

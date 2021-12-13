@@ -4,6 +4,9 @@ from . import views
 app_name = 'analysispage'
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('file_upload', views.file_upload, name="file_upload"),
+    path('', views.home, name='home'),
+    path('startCamera', views.base, name='base'),
+    path('startCamera/recordVideo', views.detect, name='detect'),
+    path('releaseCamera', views.releaseCamera, name='release'),
+    path('backPage', views.backPage, name='backPage'),
 ]
