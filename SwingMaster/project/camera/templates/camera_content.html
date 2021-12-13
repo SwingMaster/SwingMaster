@@ -1,0 +1,20 @@
+<div>
+    <!--canvas-- class="box"></canvas-->
+    <!--input type="file" accept="image/*;capture=camera"/-->
+    <img src="../camera/startCamera/recordVideo" style="width:370px; height:400px;" />
+</div>
+
+<div class="recordBtn"><button id="stopRecording" class="recordBtn" onclick="stopRecord()"><i class="far fa-dot-circle fa-4x"></i></button></div>
+
+<script>
+    function stopRecord(){
+    var test = "stop recording";
+        $.ajax({
+            url: 'releaseCamera',
+            data: {'Data': test},
+            success: function (data) {
+                window.location.href = data.url;
+            }
+        });
+    }
+</script>

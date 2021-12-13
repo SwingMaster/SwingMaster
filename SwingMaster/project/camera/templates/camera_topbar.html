@@ -1,0 +1,24 @@
+<div class="dark-blue-background">
+    <a class="back-arrow" onclick="backPage()"><i class="fas fa-arrow-left fa-2x"></i></a>
+    <!--a class="back-arrow" href="#" style="text-decoration:none">
+        &#129144;
+    </a-->
+    <span class="video-font">
+        촬영하기
+    </span>
+</div>
+
+<script>
+    function backPage(){
+    var test = "back";
+        $.ajax({
+            url: 'backPage',
+            data: {'test': test},
+
+            success: function (data) {
+                window.location.href = data.url;
+            }
+        });
+    }
+</script>
+
