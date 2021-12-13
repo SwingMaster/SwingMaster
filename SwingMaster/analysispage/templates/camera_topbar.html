@@ -7,10 +7,10 @@
 
 <script>
     function backPage(){
-    var test = "back";
+    var Data = "back";
         $.ajax({
             url: 'backPage',
-            data: {'test': test},
+            data: {'Data': test},
 
             success: function (data) {
                 window.location.href = data.url;
