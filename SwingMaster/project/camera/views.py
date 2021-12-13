@@ -1,4 +1,5 @@
 import threading
+import pickle
 
 import cv2
 from math import sqrt
@@ -21,13 +22,13 @@ def base(request):
 
 class VideoCamera(object):
     def __init__(self, request):
-        self.video = cv2.VideoCapture("./1.mp4")
+        self.filename = "1.mp4"
+        self.video = cv2.VideoCapture('./'+self.filename)
         self.cnt = 0
         self.step = 0
         self.total_landmarks = defaultdict(list)
         self.mp_pose = mp.solutions.pose
         self.mp_drawing = mp.solutions.drawing_utils
-        # self.now = datetime.datetime.now()
         self.frame_size = (int(self.video.get(cv2.CAP_PROP_FRAME_WIDTH)), int(self.video.get(cv2.CAP_PROP_FRAME_HEIGHT)))
         (self.grabbed, self.frame) = self.video.read()
 
@@ -35,12 +36,41 @@ class VideoCamera(object):
 
 
     def __del__(self):
+        with open(f'{self.filename}.pkl', 'wb') as f:
+            pickle.dump(self.total_landmarks, f)
+
         self.video.release()
 
     def get_frame(self):
         image = self.frame
         _, jpeg = cv2.imencode('.jpg', image)
         return jpeg.tobytes()
+
+    def save_landmarks(self):
+        try:
+            self.left_shoulder = self.results.pose_landmarks.landmark[11]
+            self.right_shoulder = self.results.pose_landmarks.landmark[12]
+            self.left_elbow = self.results.pose_landmarks.landmark[13]
+            self.right_elbow = self.results.pose_landmarks.landmark[14]
+            self.left_wrist = self.results.pose_landmarks.landmark[15]
+            self.right_wrist = self.results.pose_landmarks.landmark[16]
+            self.left_hip = self.results.pose_landmarks.landmark[23]
+            self.right_hip = self.results.pose_landmarks.landmark[24]
+            self.left_knee = self.results.pose_landmarks.landmark[25]
+            self.right_knee = self.results.pose_landmarks.landmark[26]
+
+            self.total_landmarks['left_shoulder'].append([self.left_shoulder.x, self.left_shoulder.y])
+            self.total_landmarks['right_shoulder'].append([self.right_shoulder.x, self.right_shoulder.y])
+            self.total_landmarks['left_elbow'].append([self.left_elbow.x, self.left_elbow.y])
+            self.total_landmarks['right_elbow'].append([self.right_elbow.x, self.right_elbow.y])
+            self.total_landmarks['left_wrist'].append([self.left_wrist.x, self.left_wrist.y])
+            self.total_landmarks['right_wrist'].append([self.right_wrist.x, self.right_wrist.y])
+            self.total_landmarks['left_hip'].append([self.left_hip.x, self.left_hip.y])
+            self.total_landmarks['right_hip'].append([self.right_hip.x, self.right_hip.y])
+            self.total_landmarks['left_knee'].append([self.left_knee.x, self.left_knee.y])
+            self.total_landmarks['right_knee'].append([self.right_knee.x, self.right_knee.y])
+        except:
+            pass
 
     def address(self):
         global status_count
@@ -62,6 +92,7 @@ class VideoCamera(object):
                 print('1. address')
                 cv2.putText(self.frame, text='1. address', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
+                self.save_landmarks()
         except:
             pass
 
@@ -84,6 +115,7 @@ class VideoCamera(object):
                 print('2. backSwing')
                 cv2.putText(self.frame, text='2. backSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
+                self.save_landmarks()
         except:
             pass
 
@@ -101,11 +133,12 @@ class VideoCamera(object):
             self.right_shoulder = self.results.pose_landmarks.landmark[12]
             self.left_shoulder = self.results.pose_landmarks.landmark[11]
 
-            if (status_count == 2) and (self.right_hip.x > self.right_wrist.x) and (self.right_hip.x > self.left_wrist.x) and (self.right_shoulder.y > self.right_wrist.y) and (self.right_shoulder.y > self.left_wrist.y) and (self.right_elbow.x < self.right_shoulder.x) and (self.left_elbow.x < self.left_shoulder.x) and (self.right_elbow.y < self.right_shoulder.y) and (self.left_elbow.y < self.left_shoulder.y):
+            if (status_count == 2) and (self.right_hip.x > self.right_wrist.x) and (self.right_hip.x > self.left_wrist.x) and (self.right_shoulder.y > self.right_wrist.y) and (self.right_shoulder.y > self.left_wrist.y) and (self.right_elbow.x < self.right_shoulder.x) and (self.left_elbow.x < self.left_shoulder.x):
                 status_count += 1
                 print('3. topSwing')
                 cv2.putText(self.frame, text='3. topSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
+                self.save_landmarks()
         except:
             pass
 
@@ -124,13 +157,14 @@ class VideoCamera(object):
             self.left_shoulder = self.results.pose_landmarks.landmark[11]
 
             if (status_count == 3) and (self.right_hip.x > self.right_wrist.x) and (
-                    self.right_hip.x > self.left_wrist.x) and (self.right_elbow.x < self.right_shoulder.x) and (
-                    self.left_elbow.x < self.left_shoulder.x) and (self.right_elbow.y > self.right_shoulder.y) and (
-                    self.left_elbow.y > self.left_shoulder.y):
+                    self.right_hip.x > self.left_wrist.x) and (self.right_wrist.x < self.right_shoulder.x) and (
+                    self.left_wrist.x < self.left_shoulder.x) and (self.right_wrist.y > self.right_shoulder.y) and (
+                    self.left_wrist.y > self.left_shoulder.y):
                 status_count += 1
                 print('4. downSwing')
                 cv2.putText(self.frame, text='4. downSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
+                self.save_landmarks()
         except:
             pass
 
@@ -157,6 +191,7 @@ class VideoCamera(object):
                 print('5. impact')
                 cv2.putText(self.frame, text='5. impact', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
+                self.save_landmarks()
         except:
             pass
 
@@ -182,6 +217,7 @@ class VideoCamera(object):
                 print('6. followThrough')
                 cv2.putText(self.frame, text='6. followThrough', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
+                self.save_landmarks()
         except:
             pass
 
@@ -207,6 +243,7 @@ class VideoCamera(object):
                 print('7. finish')
                 cv2.putText(self.frame, text='7. finish', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
+                self.save_landmarks()
         except:
             pass
 
