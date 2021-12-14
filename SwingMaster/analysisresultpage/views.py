@@ -11,11 +11,12 @@ def index(request):
 def saveScore(request):
     if request.GET.get("Data") == "save score":
         login_session = request.session.get('login_session', '')
-        user_login_session = User.objects.get(user_id=login_session)
+        userscore_name = User.objects.get(user_id=login_session)
 
         userscore = UserScore(
-            userscore_id = user_login_session.user_id,
-            userscore_nickname = user_login_session.user_nickname,
+            userscore_name = userscore_name,
+            userscore_nickname = userscore_name.user_nickname,
+            userscore_id = login_session,
             userscore_score = score
         )
         userscore.save()

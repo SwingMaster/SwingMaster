@@ -302,11 +302,10 @@ def detect(request):
         pass
 
 def releaseCamera(request):
-    global off, score
+    global off
     if request.GET.get("Data") == "stop recording":
         off = 1
-        context = {'score' : score}
-        return JsonResponse(context, {
+        return JsonResponse({
             'success': True,
             'url': reverse("analysisresultpage:result")
         })

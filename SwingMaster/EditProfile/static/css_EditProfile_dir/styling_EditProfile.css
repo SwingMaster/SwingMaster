@@ -96,20 +96,6 @@
 
 .box{margin-top: 10px;width:310px; height: 100px; background: #333333;}
 
-@media screen and (max-width:899px) {
-  .entire-box{
-    width: 100%;
-    height: 100%;
-  }
-}
-
-@media screen and (max-width:599px) {
-  .entire-box{
-    width: 100%;
-    height: 100%;
-  }
-}
-
 
 
 
