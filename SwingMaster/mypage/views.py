@@ -8,7 +8,8 @@ def index(request):
     name = User.objects.get(user_id=login_session)
     nickname = name.user_nickname
 
-    userscore_information = UserScore.objects.order_by('-userscore_register_dttm')
+    userscore_information = UserScore.objects.filter(userscore_nickname=nickname) & UserScore.objects.order_by('-userscore_register_dttm')
+
     label = ['first', 'second', 'third', 'forth', 'fifth', 'sixth']
     user_label = []
     userscore_list = []
