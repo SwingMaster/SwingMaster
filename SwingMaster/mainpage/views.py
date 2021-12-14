@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from signup.models import User
+from analysisresultpage.models import UserScore
+from collections import defaultdict
 
 def index(request):
     login_session = request.session.get('login_session', '')
@@ -8,13 +10,27 @@ def index(request):
     if login_session == '':
         return redirect('/')
     else:
+        userscore_information = UserScore.objects.all()
+        dict = defaultdict(list)
+        userscore_dict = defaultdict()
+        for i in userscore_information:
+            dict[i.userscore_name].append(i.userscore_score)
+
+        for i, v in dict.items():
+            userscore_dict[i] = sum(v)/len(v)
+
+        userscore_list = []
+        for i, v in userscore_dict.items():
+            userscore_list.append([i, v])
+        userscore_list.sort(key=lambda x:-x[1])
+
         ranking = []
 
         for i in range(11):
-            a = i+1
-            b = 'steve'+chr(65+i)
-            c = 90+i
-            ranking.append([a,b,c])
+            No = i+1
+            Name = userscore_list[i][0]
+            Value = userscore_list[i][1]
+            ranking.append([No, Name, Value])
 
         result = {'ranking':ranking, 'name': name}
 
