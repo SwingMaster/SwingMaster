@@ -29,7 +29,7 @@ def index(request):
         for i in range(11):
             No = i+1
             Name = userscore_list[i][0]
-            Value = userscore_list[i][1]
+            Value = int(userscore_list[i][1])
             ranking.append([No, Name, Value])
 
         result = {'ranking':ranking, 'name': name}

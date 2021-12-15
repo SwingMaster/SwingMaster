@@ -9,9 +9,9 @@ from django.shortcuts import render, reverse
 from django.views.decorators import gzip
 from collections import defaultdict
 
+score = None
 off = 0
 status_count = 0
-score = 30
 
 def home(request):
     context = {}
@@ -21,22 +21,24 @@ def base(request):
     return render(request, 'camera_base.html')
 
 class VideoCamera(object):
-    def __init__(self, request):
+    def __init__(self):
         self.video = cv2.VideoCapture(0)
         self.cnt = 0
         self.step = 0
+        self.score = 30
         self.total_landmarks = defaultdict(list)
         self.mp_pose = mp.solutions.pose
         self.mp_drawing = mp.solutions.drawing_utils
-        self.total_landmarks = defaultdict(list)
         self.frame_size = (int(self.video.get(cv2.CAP_PROP_FRAME_WIDTH)), int(self.video.get(cv2.CAP_PROP_FRAME_HEIGHT)))
         (self.grabbed, self.frame) = self.video.read()
 
         threading.Thread(target=self.update, args=()).start()
 
-
     def __del__(self):
         self.video.release()
+
+    def get_score(self):
+        return self.score
 
     def get_frame(self):
         image = self.frame
@@ -70,7 +72,7 @@ class VideoCamera(object):
     #         pass
 
     def address(self):
-        global status_count, score
+        global status_count
 
         cv2.putText(self.frame, text='No start_trigger', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                     fontScale=2.5, color=(255, 255, 255), thickness=7)
@@ -89,12 +91,12 @@ class VideoCamera(object):
                 print('1. address')
                 cv2.putText(self.frame, text='1. address', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
-                score += 10
+                self.score += 10
         except:
             pass
 
     def backSwing(self):
-        global status_count, score
+        global status_count
 
         print('2. not backSwing')
 
@@ -112,12 +114,12 @@ class VideoCamera(object):
                 print('2. backSwing')
                 cv2.putText(self.frame, text='2. backSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
-                score += 10
+                self.score += 10
         except:
             pass
 
     def topSwing(self):
-        global status_count, score
+        global status_count
 
         print('3. not topSwing')
 
@@ -135,12 +137,12 @@ class VideoCamera(object):
                 print('3. topSwing')
                 cv2.putText(self.frame, text='3. topSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
-                score += 10
+                self.score += 10
         except:
             pass
 
     def downSwing(self):
-        global status_count, score
+        global status_count
 
         print('4. not downSwing')
 
@@ -161,12 +163,12 @@ class VideoCamera(object):
                 print('4. downSwing')
                 cv2.putText(self.frame, text='4. downSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
-                score += 10
+                self.score += 10
         except:
             pass
 
     def impact(self):
-        global status_count, score
+        global status_count
 
         print('5. not impact')
 
@@ -188,12 +190,12 @@ class VideoCamera(object):
                 print('5. impact')
                 cv2.putText(self.frame, text='5. impact', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
-                score += 10
+                self.score += 10
         except:
             pass
 
     def followThrough(self):
-        global status_count, score
+        global status_count
 
         print('6. not followThrough')
 
@@ -214,12 +216,12 @@ class VideoCamera(object):
                 print('6. followThrough')
                 cv2.putText(self.frame, text='6. followThrough', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
-                score += 10
+                self.score += 10
         except:
             pass
 
     def finish(self):
-        global status_count, score
+        global status_count
 
         print('7. not finish')
 
@@ -240,7 +242,7 @@ class VideoCamera(object):
                 print('7. finish')
                 cv2.putText(self.frame, text='7. finish', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
-                score += 10
+                self.score += 10
         except:
             pass
 
@@ -286,15 +288,19 @@ class VideoCamera(object):
                     break
 
 def gen(camera):
+    global score
     while True:
         frame = camera.get_frame()
+        score = camera.get_score()
+        print(score)
+
         yield(b'--frame\r\n'
               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
 @gzip.gzip_page
 def detect(request):
     try:
-        cam = VideoCamera(request)
+        cam = VideoCamera()
         return StreamingHttpResponse(gen(cam), content_type="multipart/x-mixed-replace;boundary=frame")
 
     except:  # This is bad! replace it with proper handling

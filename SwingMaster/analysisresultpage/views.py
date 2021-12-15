@@ -1,11 +1,13 @@
-from analysispage.views import score
 from django.shortcuts import render, reverse
 from django.http import JsonResponse
 from signup.models import User
 from .models import UserScore
+from analysispage import views
+
+# score = 30
 
 def index(request):
-    context = {'score': score}
+    context = {'score': views.score}
     return render(request, 'result_base.html', context)
 
 def saveScore(request):
@@ -17,7 +19,7 @@ def saveScore(request):
             userscore_name = userscore_name,
             userscore_nickname = userscore_name.user_nickname,
             userscore_id = login_session,
-            userscore_score = score
+            userscore_score = views.score
         )
         userscore.save()
         return JsonResponse({
