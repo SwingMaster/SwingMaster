@@ -22,7 +22,7 @@ def base(request):
 
 class VideoCamera(object):
     def __init__(self):
-        self.video = cv2.VideoCapture('./1.mp4')
+        self.video = cv2.VideoCapture(0)
         self.cnt = 0
         self.step = 0
         self.score = 65
