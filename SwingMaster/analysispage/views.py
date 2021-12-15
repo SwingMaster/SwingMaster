@@ -22,10 +22,10 @@ def base(request):
 
 class VideoCamera(object):
     def __init__(self):
-        self.video = cv2.VideoCapture(0)
+        self.video = cv2.VideoCapture('./1.mp4')
         self.cnt = 0
         self.step = 0
-        self.score = 30
+        self.score = 65
         self.total_landmarks = defaultdict(list)
         self.mp_pose = mp.solutions.pose
         self.mp_drawing = mp.solutions.drawing_utils
@@ -91,7 +91,7 @@ class VideoCamera(object):
                 print('1. address')
                 cv2.putText(self.frame, text='1. address', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
-                self.score += 10
+                self.score += 5
         except:
             pass
 
@@ -114,7 +114,7 @@ class VideoCamera(object):
                 print('2. backSwing')
                 cv2.putText(self.frame, text='2. backSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
-                self.score += 10
+                self.score += 5
         except:
             pass
 
@@ -137,7 +137,7 @@ class VideoCamera(object):
                 print('3. topSwing')
                 cv2.putText(self.frame, text='3. topSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
-                self.score += 10
+                self.score += 5
         except:
             pass
 
@@ -163,7 +163,7 @@ class VideoCamera(object):
                 print('4. downSwing')
                 cv2.putText(self.frame, text='4. downSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
-                self.score += 10
+                self.score += 5
         except:
             pass
 
@@ -190,7 +190,7 @@ class VideoCamera(object):
                 print('5. impact')
                 cv2.putText(self.frame, text='5. impact', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
-                self.score += 10
+                self.score += 5
         except:
             pass
 
@@ -216,7 +216,7 @@ class VideoCamera(object):
                 print('6. followThrough')
                 cv2.putText(self.frame, text='6. followThrough', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
-                self.score += 10
+                self.score += 5
         except:
             pass
 
@@ -242,7 +242,7 @@ class VideoCamera(object):
                 print('7. finish')
                 cv2.putText(self.frame, text='7. finish', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                             fontScale=2.5, color=(255, 255, 255), thickness=7)
-                self.score += 10
+                self.score += 5
         except:
             pass
 
