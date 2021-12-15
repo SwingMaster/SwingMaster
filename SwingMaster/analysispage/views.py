@@ -74,9 +74,6 @@ class VideoCamera(object):
     def address(self):
         global status_count
 
-        cv2.putText(self.frame, text='No start_trigger', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-                    fontScale=2.5, color=(255, 255, 255), thickness=7)
-
         print('1. not address')
         try:
             self.left_hip = self.results.pose_landmarks.landmark[23]
@@ -89,8 +86,7 @@ class VideoCamera(object):
             if ((self.right_hip.x < self.right_wrist.x and self.left_hip.x > self.left_wrist.x) and (self.dist_hip > self.dist_wrist)) and status_count == 0:
                 status_count += 1
                 print('1. address')
-                cv2.putText(self.frame, text='1. address', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-                            fontScale=2.5, color=(255, 255, 255), thickness=7)
+
                 self.score += 5
         except:
             pass
@@ -112,8 +108,7 @@ class VideoCamera(object):
             if (status_count == 1) and (self.right_hip.x > self.right_wrist.x) and (self.right_hip.x > self.left_wrist.x) and (self.right_elbow.x < self.right_shoulder.x) and (self.left_elbow.x < self.left_shoulder.x) and (self.right_elbow.y > self.right_shoulder.y) and (self.left_elbow.y > self.left_shoulder.y):
                 status_count += 1
                 print('2. backSwing')
-                cv2.putText(self.frame, text='2. backSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-                            fontScale=2.5, color=(255, 255, 255), thickness=7)
+
                 self.score += 5
         except:
             pass
@@ -135,8 +130,7 @@ class VideoCamera(object):
             if (status_count == 2) and (self.right_hip.x > self.right_wrist.x) and (self.right_hip.x > self.left_wrist.x) and (self.right_shoulder.y > self.right_wrist.y) and (self.right_shoulder.y > self.left_wrist.y) and (self.right_elbow.x < self.right_shoulder.x) and (self.left_elbow.x < self.left_shoulder.x):
                 status_count += 1
                 print('3. topSwing')
-                cv2.putText(self.frame, text='3. topSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-                            fontScale=2.5, color=(255, 255, 255), thickness=7)
+
                 self.score += 5
         except:
             pass
@@ -161,8 +155,7 @@ class VideoCamera(object):
                     self.left_wrist.y > self.left_shoulder.y):
                 status_count += 1
                 print('4. downSwing')
-                cv2.putText(self.frame, text='4. downSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-                            fontScale=2.5, color=(255, 255, 255), thickness=7)
+
                 self.score += 5
         except:
             pass
@@ -188,8 +181,7 @@ class VideoCamera(object):
                     self.left_wrist.y > self.left_shoulder.y) and status_count == 4:
                 status_count += 1
                 print('5. impact')
-                cv2.putText(self.frame, text='5. impact', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-                            fontScale=2.5, color=(255, 255, 255), thickness=7)
+
                 self.score += 5
         except:
             pass
@@ -214,8 +206,7 @@ class VideoCamera(object):
                     self.left_elbow.y > self.left_shoulder.y):
                 status_count += 1
                 print('6. followThrough')
-                cv2.putText(self.frame, text='6. followThrough', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-                            fontScale=2.5, color=(255, 255, 255), thickness=7)
+
                 self.score += 5
         except:
             pass
@@ -240,8 +231,7 @@ class VideoCamera(object):
                     self.left_wrist.x > self.left_shoulder.x) and (self.right_wrist.y < self.right_shoulder.y) and (self.left_wrist.y < self.left_shoulder.y):
                 status_count += 1
                 print('7. finish')
-                cv2.putText(self.frame, text='7. finish', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-                            fontScale=2.5, color=(255, 255, 255), thickness=7)
+
                 self.score += 5
         except:
             pass
