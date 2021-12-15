@@ -5,7 +5,7 @@ from math import sqrt
 import mediapipe as mp
 from django.http import JsonResponse
 from django.http import StreamingHttpResponse
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, redirect
 from django.views.decorators import gzip
 from collections import defaultdict
 
@@ -14,11 +14,20 @@ off = 0
 status_count = 0
 
 def home(request):
-    context = {}
-    return render(request, 'camera_home.html', context)
+    login_session = request.session.get('login_session', '')
+
+    if login_session == '':
+        return redirect('/')
+    else:
+        return render(request, 'camera_home.html')
 
 def base(request):
-    return render(request, 'camera_base.html')
+    login_session = request.session.get('login_session', '')
+
+    if login_session == '':
+        return redirect('/')
+    else:
+        return render(request, 'camera_base.html')
 
 class VideoCamera(object):
     def __init__(self):
@@ -32,9 +41,12 @@ class VideoCamera(object):
         self.frame_size = (int(self.video.get(cv2.CAP_PROP_FRAME_WIDTH)), int(self.video.get(cv2.CAP_PROP_FRAME_HEIGHT)))
         (self.grabbed, self.frame) = self.video.read()
 
-        threading.Thread(target=self.update, args=()).start()
+        threading.Thread(target=self.update, args=(), daemon=True).start()
 
     def __del__(self):
+        global status_count
+
+        status_count = 0
         self.video.release()
 
     def get_score(self):
@@ -312,5 +324,4 @@ def backPage(request):
         off = 1
         return JsonResponse({
             'success': True,
-            'url': reverse("analysispage:camera"),
         })

@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, redirect
 from django.http import JsonResponse
 from signup.models import User
 from .models import UserScore
@@ -7,8 +7,13 @@ from analysispage import views
 # score = 30
 
 def index(request):
-    context = {'score': views.score}
-    return render(request, 'result_base.html', context)
+    login_session = request.session.get('login_session', '')
+
+    if login_session == '':
+        return redirect('/')
+    else:
+        context = {'score': views.score}
+        return render(request, 'result_base.html', context)
 
 def saveScore(request):
     if request.GET.get("Data") == "save score":

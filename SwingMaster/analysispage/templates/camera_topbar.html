@@ -1,5 +1,5 @@
 <div class="dark-blue-background">
-    <a class="back-arrow" onclick="backPage()"><i class="fas fa-arrow-left fa-1x"></i></a>
+    <a class="back-arrow" href="../camera" onclick="backPage()"><i class="fas fa-arrow-left fa-1x"></i></a>
     <span class="video-font">
         촬영하기
     </span>
@@ -7,13 +7,13 @@
 
 <script>
     function backPage(){
-    var Data = "back";
+    var message = "back";
         $.ajax({
             url: 'backPage',
-            data: {'Data': test},
+            data: {'Data': message},
 
             success: function (data) {
-                window.location.href = data.url;
+                console.log(data)
             }
         });
     }

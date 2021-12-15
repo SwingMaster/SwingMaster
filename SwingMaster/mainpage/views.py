@@ -5,11 +5,12 @@ from collections import defaultdict
 
 def index(request):
     login_session = request.session.get('login_session', '')
-    name = User.objects.get(user_id=login_session)
 
     if login_session == '':
         return redirect('/')
     else:
+        name = User.objects.get(user_id=login_session)
+
         userscore_information = UserScore.objects.all()
         dict = defaultdict(list)
         userscore_dict = defaultdict()
