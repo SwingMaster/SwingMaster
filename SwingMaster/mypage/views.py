@@ -15,13 +15,14 @@ def index(request):
         userscore_information = UserScore.objects.filter(userscore_nickname=nickname) & UserScore.objects.order_by(
             '-userscore_register_dttm')
 
-        label = ['first', 'second', 'third', 'forth', 'fifth', 'sixth']
         user_label = []
         userscore_list = []
 
         for i in range(6):
             try:
-                user_label.append(label[i])
+                dttm = userscore_information[i].userscore_register_dttm
+
+                user_label.append(str(dttm.hour) + '시'+ ' ' + str(dttm.minute) + '분')
                 userscore_list.append(userscore_information[i].userscore_score)
             except:
                 break
