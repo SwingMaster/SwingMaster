@@ -1,3 +1,13 @@
+@font-face{
+  font-family: "main-font";
+  src: url("./GmarketSansMedium.otf") format("opentype");
+}
+
+@font-face{
+  font-family: "sub-font";
+  src: url("./paybooc OTF Medium.otf") format("opentype");
+}
+
 .entire-box{
   position: absolute;
   left: 50%;
@@ -8,12 +18,41 @@
   test-align: center;
 }
 
+.dark-blue-background {
+  background: #025959;
+  width: 370px;
+  height: 53px;
+  z-index: 3;
+}
+
+.dark-blue-background .back-arrow{
+  color:white;
+  position: relative;
+  left: 5%;
+  top: 15%;
+}
+
+.dark-blue-background .profile-font {
+  font-size: 28px;
+  font-family: "main-font";
+  color: rgb(255, 255, 255);
+  line-height: 1.2;
+  text-align: center;
+  -moz-transform: matrix( 1.63398320585301,0,0,1.72757105285814,0,0);
+  -webkit-transform: matrix( 1.63398320585301,0,0,1.72757105285814,0,0);
+  -ms-transform: matrix( 1.63398320585301,0,0,1.72757105285814,0,0);
+  left: 24%;
+  top: 20%;
+  position: relative;
+}
+
 .content{
   margin-top: 30px;
 }
 
 .input-block{
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-left: 5px;
 }
 
 .input-block .input_text{
@@ -29,7 +68,7 @@
   border-bottom: 2px solid  #gray;
   border-left:   0px;
   box-shadow: none;
-  width: 300px;
+  width: 350px;
   height: 30px;
   cursor:pointer;
 }
@@ -41,7 +80,7 @@
 .inputDiv .inputDiv-button{
   cursor:pointer;
   position: absolute;
-  left: 65%;
+  left: 80%;
   top: 8px;
   width: 56px;
   height: 20px;
@@ -64,21 +103,19 @@
    text-decoration: none;
    outline: none;
    border: none;
+   margin-top: 20px;
 }
 
-
-.footer-button{
-  position: relative;
-  left: 31%;
-}
 
 .footer-button {
+  position: relative;
+  left: 40%;
   cursor:pointer;
-  background: #6E6E6E;
-  margin-top: 2px;
+  background: #038C7F;
+  margin-top: 10%;
   top: 8px;
-  width: 56px;
-  height: 20px;
+  width: 80px;
+  height: 30px;
   border-radius: 10%;
   border:0px transparent solid; block
 }

@@ -1,3 +1,13 @@
+@font-face{
+  font-family: "main-font";
+  src: url("./GmarketSansMedium.otf") format("opentype");
+}
+
+@font-face{
+  font-family: "sub-font";
+  src: url("./paybooc OTF Medium.otf") format("opentype");
+}
+
 .entire-box{
   position: absolute;
   left: 50%;
@@ -40,10 +50,12 @@ h2{
   z-index: 5;
   position: relative;
   object-fit: cover;
+  margin-top: 3%;
 }
 
 .rank h5{
   margin: 0;
+  font-family: "main-font";
 }
 
 .content table{
@@ -53,11 +65,12 @@ h2{
   margin-top: 30px;
   margin-bottom: 5px;
   border-collapse:collapse;
-  font-family: sans-serif;
+  font-family: "sub-font";
 }
 
 .content table th{
   font-size: 15px;
+  font-family: "sub-font";
 }
 
 .content table td{
@@ -69,16 +82,15 @@ h2{
 .footer{
   position: relative;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .footer-button{
   width: 100px;
   height: 40px;
-  background: #3599db;
+  background: #038C7F;
   border:0px transparent solid;
   border-radius: 10px;
-  font-color: white;
 }
 
 .footer-button:hover{

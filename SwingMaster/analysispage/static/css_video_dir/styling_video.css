@@ -1,4 +1,7 @@
-@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@font-face{
+  font-family: "main-font";
+  src: url("./GmarketSansMedium.otf") format("opentype");
+}
 
 .entire-box{
   position: absolute;
@@ -11,7 +14,7 @@
 }
 
 .dark-blue-background {
-  background: #409acb;
+  background: #025959;
   width: 370px;
   height: 53px;
   z-index: 3;
@@ -26,7 +29,7 @@
 
 .dark-blue-background .video-font {
   font-size: 28px;
-  font-family: 'Hanna', sans-serif;
+  font-family: "main-font";
   color: rgb(255, 255, 255);
   line-height: 1.2;
   text-align: center;

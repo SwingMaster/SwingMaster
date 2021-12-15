@@ -1,4 +1,12 @@
-@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@font-face{
+  font-family: "main-font";
+  src: url("./GmarketSansMedium.otf") format("opentype");
+}
+
+@font-face{
+  font-family: "sub-font";
+  src: url("./paybooc OTF Medium.otf") format("opentype");
+}
 
 .entire-box{
   position: absolute;
@@ -11,7 +19,7 @@
 }
 
 .dark-blue-background {
-  background: #409acb;
+  background: #025959;
   width: 370px;
   height: 53px;
   z-index: 3;
@@ -26,7 +34,7 @@
 
 .dark-blue-background .mypage-font {
   font-size: 28px;
-  font-family: 'Hanna', sans-serif;
+  font-family: "main-font";
   color: rgb(255, 255, 255);
   line-height: 1.2;
   text-align: center;
@@ -39,7 +47,7 @@
 }
 
 .white-blue-background {
-  background: #6cb8ec;
+  background: #038C7F;
   top: 20%;
   width: 370px;
   height: 146px;
@@ -65,7 +73,7 @@
 
 .white-blue-background .name-font {
   font-size: 16px;
-  font-family: 'Hanna', sans-serif;
+  font-family: "main-font";
   color: #FFFFFF;
   line-height: 1.2;
   text-align: center;
@@ -73,7 +81,7 @@
   -webkit-transform: matrix( 0.98635307369746,0,0,1.1346137468578,0,0);
   -ms-transform: matrix( 0.98635307369746,0,0,1.1346137468578,0,0);
   position: absolute;
-  left: 41%;
+  left: 45%;
   top: 80%;
   z-index: 15;
 }
@@ -86,7 +94,7 @@
 
 .profile .profile-font {
   font-size: 15px;
-  font-family: "Sans-serif";
+  font-family: "sub-font";
   color: rgb(0, 0, 0);
   line-height: 1.2;
   -moz-transform: matrix( 0.53277326562117,0,0,0.58413418274056,0,0);
@@ -123,7 +131,7 @@ hr  {
 
 .myrank .myrank-font {
   font-size: 15px;
-  font-family: "Sans-serif";
+  font-family: "sub-font";
   color: rgb(0, 0, 0);
   line-height: 1.2;
   -moz-transform: matrix( 0.53277326562117,0,0,0.58413418274056,0,0);

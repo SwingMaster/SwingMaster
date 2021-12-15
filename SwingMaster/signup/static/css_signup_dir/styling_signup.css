@@ -1,3 +1,13 @@
+@font-face{
+  font-family: "main-font";
+  src: url("./GmarketSansMedium.otf") format("opentype");
+}
+
+@font-face{
+  font-family: "sub-font";
+  src: url("./paybooc OTF Medium.otf") format("opentype");
+}
+
 .entire-box{
   position: absolute;
   left: 50%;
@@ -17,6 +27,13 @@
 
 .input-block .input_text{
   font-weight: 540;
+  font-family: "sub-font";
+  font-size: small;
+}
+
+.input_box::placeholder{
+  font-family:"sub-font";
+  font-size: small;
 }
 
 .input-block .input_box{
@@ -54,10 +71,12 @@
 }
 
 .footer-button {
-  background: #6E6E6E;
+  background: #038C7F;
   margin-top: 20px;
   border-radius: 10px;
   border:0px transparent solid;
+  width: 100px;
+  height: 30px;
 }
 
 .footer-button:hover{
@@ -69,7 +88,7 @@
   margin: 0 auto;
   width: 300px;
   height: 40px;
-  background: #3599db;
+  background: #038C7F;
   border:0px transparent solid;
   border-radius: 10px;
 }
