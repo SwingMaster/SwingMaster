@@ -1,8 +1,30 @@
-<div class="evaluate"><b>Excellent!</b></div>
-<div class="score"><b>{{ score }}점</b></div>
-<div>
-    <canvas class="box"></canvas>
+<div class="mini-game">
+    <div class="game-character">
+        <img class="golf-ball" src="../static/assets/img/golf_ball.png">
+    </div>
+    <div class="game-bar">
+        <img class="status-bar" src="../static/assets/img/status_bar.png">
+    </div>
+    <div class="distance">
+        <span class="start-distance">0m</span>
+        <span class="end-distance">{{ distance }}m</span>
+    </div>
+    <div class="score-box">
+        <div class="inner-score-box">
+            <div class="inner-score-content">
+                <div class="score-text">
+                    <span class="text">점수</span>
+                    <div class="blank">{{ score }}점</div>
+                </div>
+                <div class="distance-text">
+                    <span class="text">거리</span>
+                    <div class="blank">{{ distance }}m</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 <div class="btn">
     <button class="btn1" onclick="location.href='../camera'"><b style="color:#FFFFFF; font-family:main-font;">다시 촬영</b></button>
     <button class="btn2" onclick=save()><b style="color:#FFFFFF; font-family:main-font;">저장하기</b></button>

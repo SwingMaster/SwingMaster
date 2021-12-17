@@ -4,15 +4,31 @@ from signup.models import User
 from .models import UserScore
 from analysispage import views
 
-# score = 30
-
 def index(request):
     login_session = request.session.get('login_session', '')
 
     if login_session == '':
         return redirect('/')
     else:
-        context = {'score': views.score}
+        distance = 200
+        if views.score == 65:
+            distance = 150
+        elif views.score == 70:
+            distance = 200
+        elif views.score == 75:
+            distance = 250
+        elif views.score == 80:
+            distance = 300
+        elif views.score == 85:
+            distance = 350
+        elif views.score == 90:
+            distance = 400
+        elif views.score == 95:
+            distance = 450
+        elif views.score == 100:
+            distance = 500
+
+        context = {'score': views.score, 'distance':distance}
         return render(request, 'result_base.html', context)
 
 def saveScore(request):

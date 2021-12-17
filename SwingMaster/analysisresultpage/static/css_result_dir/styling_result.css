@@ -3,6 +3,16 @@
   src: url("./GmarketSansMedium.otf") format("opentype");
 }
 
+@font-face{
+  font-family: "w-blod";
+  src: url("./Wemakeprice-Bold.otf") format("opentype");
+}
+
+@font-face{
+  font-family: "w-regular";
+  src: url("./Wemakeprice-Regular.otf") format("opentype");
+}
+
 .entire-box{
   position: absolute;
   left: 50%;
@@ -21,7 +31,7 @@
 }
 
 .dark-blue-background .back-arrow{
-  color:white;
+  color: #FFFFFF;
   position: relative;
   left: 5%;
   top: 15%;
@@ -36,19 +46,131 @@
   -moz-transform: matrix( 1.63398320585301,0,0,1.72757105285814,0,0);
   -webkit-transform: matrix( 1.63398320585301,0,0,1.72757105285814,0,0);
   -ms-transform: matrix( 1.63398320585301,0,0,1.72757105285814,0,0);
-  left: 25%;
+  left: 30%;
   top: 20%;
   position: relative;
 }
 
-
-.box{
-    width: 230px;
-    height : 340px;
-    margin-left : 70px;
+.mini-game{
+    width: 380px;
+    height : 400px;
+    margin-left : 40px;
     margin-top : 10px;
     margin-bottom: 20px;
-    background-color: #FFFFFF;
+}
+
+@keyframes character {
+    0% {left:0}
+    100% {left:250px;}
+}
+
+.game-character{
+    position: relative;
+    top: 15%;
+    width: 30px;
+    height: 30px;
+    z-index: 1;
+    animation-name: character;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-fill-mode : forwards;
+}
+
+.golf-ball{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.game-bar{
+    position: absolute;
+    width: 300px;
+    height: 80px;
+    top: 15%;
+    left: 10%;
+    z-index: 0;
+}
+
+.status-bar{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.distance{
+    margin-top: 21%;
+    font-family:"w-regular";
+}
+
+.end-distance{
+    margin-left: 60%;
+}
+
+.score-box{
+    width: 300px;
+    height: 200px;
+    margin-top: 10%;
+    border-radius: 20px;
+    box-shadow: 0 5px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.inner-score-box{
+    width: 280px;
+    height: 180px;
+    border-radius: 20px;
+    border: 1px solid gray;
+    background: #498a71;
+    margin: 0 10px 0 10px;
+    padding-top: 10px;
+}
+
+.inner-score-content{
+    margin-top: 15%;
+    margin-left: 10%;
+    font-family:"w-regular";
+}
+
+.score-text{
+}
+
+.score-text .text{
+    margin-right: 20px;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+.score-text .blank{
+    display: inline-block;
+    width: 180px;
+    height: 35px;
+    background: #FFFFFF;
+    border-radius: 50px;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.7);
+    text-align: center;
+    line-height: 35px;
+    font-size: 20px;
+}
+
+.distance-text{
+    margin-top: 40px;
+}
+
+.distance-text .text{
+    margin-right: 20px;
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+.distance-text .blank{
+    display: inline-block;
+    width: 180px;
+    height: 35px;
+    background: #FFFFFF;
+    border-radius: 50px;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.7);
+    text-align: center;
+    line-height: 35px;
+    font-size: 20px;
 }
 
 .btn{
