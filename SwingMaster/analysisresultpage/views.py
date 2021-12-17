@@ -10,7 +10,7 @@ def index(request):
     if login_session == '':
         return redirect('/')
     else:
-        distance = 200
+        distance = 150
         if views.score == 65:
             distance = 150
         elif views.score == 70:

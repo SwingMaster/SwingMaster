@@ -9,7 +9,7 @@ from django.shortcuts import render, reverse, redirect
 from django.views.decorators import gzip
 from collections import defaultdict
 
-score = None
+score = 65
 off = 0
 status_count = 0
 
