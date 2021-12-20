@@ -9,7 +9,7 @@ from django.shortcuts import render, reverse, redirect
 from django.views.decorators import gzip
 from collections import defaultdict
 
-score = 65
+score = 55
 off = 0
 status_count = 0
 
@@ -34,7 +34,7 @@ class VideoCamera(object):
         self.video = cv2.VideoCapture(0)
         self.cnt = 0
         self.step = 0
-        self.score = 65
+        self.score = 55
         self.total_landmarks = defaultdict(list)
         self.mp_pose = mp.solutions.pose
         self.mp_drawing = mp.solutions.drawing_utils
@@ -85,6 +85,8 @@ class VideoCamera(object):
 
     def address(self):
         global status_count
+        # cv2.putText(self.frame, text='1. not address', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+        #             fontScale=2.5, color=(255, 255, 255), thickness=7)
 
         print('1. not address')
         try:
@@ -98,6 +100,8 @@ class VideoCamera(object):
             if ((self.right_hip.x < self.right_wrist.x and self.left_hip.x > self.left_wrist.x) and (self.dist_hip > self.dist_wrist)) and status_count == 0:
                 status_count += 1
                 print('1. address')
+                # cv2.putText(self.frame, text='1. address', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                #             fontScale=2.5, color=(255, 255, 255), thickness=7)
 
                 self.score += 5
         except:
@@ -106,6 +110,8 @@ class VideoCamera(object):
     def backSwing(self):
         global status_count
 
+        # cv2.putText(self.frame, text='2. not backSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+        #             fontScale=2.5, color=(255, 255, 255), thickness=7)
         print('2. not backSwing')
 
         try:
@@ -120,16 +126,19 @@ class VideoCamera(object):
             if (status_count == 1) and (self.right_hip.x > self.right_wrist.x) and (self.right_hip.x > self.left_wrist.x) and (self.right_elbow.x < self.right_shoulder.x) and (self.left_elbow.x < self.left_shoulder.x) and (self.right_elbow.y > self.right_shoulder.y) and (self.left_elbow.y > self.left_shoulder.y):
                 status_count += 1
                 print('2. backSwing')
+                # cv2.putText(self.frame, text='2. backSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                #             fontScale=2.5, color=(255, 255, 255), thickness=7)
 
-                self.score += 5
+                self.score += 6
         except:
             pass
 
     def topSwing(self):
         global status_count
 
+        # cv2.putText(self.frame, text='3. not topSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+        #             fontScale=2.5, color=(255, 255, 255), thickness=7)
         print('3. not topSwing')
-
         try:
             self.right_hip = self.results.pose_landmarks.landmark[24]
             self.right_wrist = self.results.pose_landmarks.landmark[16]
@@ -142,14 +151,18 @@ class VideoCamera(object):
             if (status_count == 2) and (self.right_hip.x > self.right_wrist.x) and (self.right_hip.x > self.left_wrist.x) and (self.right_shoulder.y > self.right_wrist.y) and (self.right_shoulder.y > self.left_wrist.y) and (self.right_elbow.x < self.right_shoulder.x) and (self.left_elbow.x < self.left_shoulder.x):
                 status_count += 1
                 print('3. topSwing')
+                # cv2.putText(self.frame, text='3. topSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                #             fontScale=2.5, color=(255, 255, 255), thickness=7)
 
-                self.score += 5
+                self.score += 8
         except:
             pass
 
     def downSwing(self):
         global status_count
 
+        # cv2.putText(self.frame, text='4. not downSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+        #             fontScale=2.5, color=(255, 255, 255), thickness=7)
         print('4. not downSwing')
 
         try:
@@ -167,6 +180,8 @@ class VideoCamera(object):
                     self.left_wrist.y > self.left_shoulder.y):
                 status_count += 1
                 print('4. downSwing')
+                # cv2.putText(self.frame, text='4. downSwing', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                #             fontScale=2.5, color=(255, 255, 255), thickness=7)
 
                 self.score += 5
         except:
@@ -175,6 +190,8 @@ class VideoCamera(object):
     def impact(self):
         global status_count
 
+        # cv2.putText(self.frame, text='5. not impact', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+        #             fontScale=2.5, color=(255, 255, 255), thickness=7)
         print('5. not impact')
 
         try:
@@ -193,14 +210,18 @@ class VideoCamera(object):
                     self.left_wrist.y > self.left_shoulder.y) and status_count == 4:
                 status_count += 1
                 print('5. impact')
+                # cv2.putText(self.frame, text='5. impact', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                #             fontScale=2.5, color=(255, 255, 255), thickness=7)
 
-                self.score += 5
+                self.score += 9
         except:
             pass
 
     def followThrough(self):
         global status_count
 
+        # cv2.putText(self.frame, text='6. not followThrough', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+        #             fontScale=2.5, color=(255, 255, 255), thickness=7)
         print('6. not followThrough')
 
         try:
@@ -218,14 +239,18 @@ class VideoCamera(object):
                     self.left_elbow.y > self.left_shoulder.y):
                 status_count += 1
                 print('6. followThrough')
+                # cv2.putText(self.frame, text='6. followThrough', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                #             fontScale=2.5, color=(255, 255, 255), thickness=7)
 
-                self.score += 5
+                self.score += 7
         except:
             pass
 
     def finish(self):
         global status_count
 
+        # cv2.putText(self.frame, text='7. not finish', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+        #             fontScale=2.5, color=(255, 255, 255), thickness=7)
         print('7. not finish')
 
         try:
@@ -243,6 +268,8 @@ class VideoCamera(object):
                     self.left_wrist.x > self.left_shoulder.x) and (self.right_wrist.y < self.right_shoulder.y) and (self.left_wrist.y < self.left_shoulder.y):
                 status_count += 1
                 print('7. finish')
+                # cv2.putText(self.frame, text='7. finish', org=(250, 80), fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                #             fontScale=2.5, color=(255, 255, 255), thickness=7)
 
                 self.score += 5
         except:

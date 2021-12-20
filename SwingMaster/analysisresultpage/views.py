@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from signup.models import User
 from .models import UserScore
 from analysispage import views
+import random
 
 def index(request):
     login_session = request.session.get('login_session', '')
@@ -11,24 +12,45 @@ def index(request):
         return redirect('/')
     else:
         distance = 150
-        if views.score == 65:
-            distance = 150
-        elif views.score == 70:
-            distance = 200
-        elif views.score == 75:
-            distance = 250
-        elif views.score == 80:
-            distance = 300
-        elif views.score == 85:
-            distance = 350
-        elif views.score == 90:
-            distance = 400
-        elif views.score == 95:
-            distance = 450
-        elif views.score == 100:
-            distance = 500
+        keyword = ["O.B.", "Bunker", "Hazard", "Hole in One!", "Fairway"]
 
-        context = {'score': views.score, 'distance':distance}
+        if views.score <= 65:
+            distance = 0
+            idx = random.randint(0, 2)
+            result = keyword[idx]
+
+        elif views.score > 65 and views.score <= 70:
+            distance = random.randint(170, 175)
+            result = keyword[4]
+
+        elif views.score > 70 and views.score <= 75:
+            distance = random.randint(176, 180)
+            result = keyword[4]
+
+        elif views.score > 75 and views.score <= 80:
+            distance = random.randint(181, 185)
+            result = keyword[4]
+
+        elif views.score > 80 and views.score <= 85:
+            distance = random.randint(186, 190)
+            result = keyword[4]
+
+        elif views.score > 85 and views.score <= 90:
+            distance = random.randint(191, 195)
+            result = keyword[4]
+
+        elif views.score > 90 and views.score <= 95:
+            distance = random.randint(196, 200)
+            result = keyword[4]
+
+        elif views.score > 95 and views.score <= 100:
+            distance = random.randint(201, 205)
+            result = keyword[4]
+
+            if views.score == 100:
+                result = keyword[3]
+
+        context = {'score': views.score, 'distance':distance, 'result':result}
         return render(request, 'result_base.html', context)
 
 def saveScore(request):

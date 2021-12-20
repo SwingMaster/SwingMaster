@@ -1,26 +1,33 @@
 <div class="mini-game">
-    <div class="game-character">
-        <img class="golf-ball" src="../static/assets/img/golf_ball.png">
-    </div>
-    <div class="game-bar">
-        <img class="status-bar" src="../static/assets/img/status_bar.png">
-    </div>
-    <div class="distance">
-        <span class="start-distance">0m</span>
-        <span class="end-distance">{{ distance }}m</span>
-    </div>
-    <div class="score-box">
-        <div class="inner-score-box">
-            <div class="inner-score-content">
-                <div class="score-text">
-                    <span class="text">점수</span>
-                    <div class="blank">{{ score }}점</div>
-                </div>
-                <div class="distance-text">
-                    <span class="text">거리</span>
-                    <div class="blank">{{ distance }}m</div>
+    <div class="mini-game-left">
+        <div id="result-text">
+            {{ result }}!
+        </div>
+        <div class="entire-score-box">
+            <div class="score-box">
+                <div class="inner-score-box">
+                    <div class="inner-score-content">
+                        <div class="score-text">
+                            <span class="text">점수</span>
+                            <div class="blank">{{ score }}점</div>
+                        </div>
+                        <div class="distance-text">
+                            <span class="text">거리</span>
+                            <div class="blank">{{ distance }}yd</div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="mini-game-right">
+        <div class="game-bar">
+            <div class="status-bar">
+                <img src="../static/assets/img/game_bar.png" />
+            </div>
+        </div>
+        <div class="game-character">
+            <img class="golf-ball" src="../static/assets/img/golf_ball.png">
         </div>
     </div>
 </div>
@@ -42,4 +49,39 @@
             }
         });
     }
+
+    var div = document.getElementById("result-text");
+    var result = "{{ result|safe }}";
+    var result_x = 0;
+    var result_y = 0;
+
+    if (result == 'O.B.'){
+        result_x = 100;
+        result_y = -200;
+        div.style.color = "#F7941F";
+    }
+    else if(result == 'Bunker'){
+        result_x = -20;
+        result_y = -240;
+        div.style.color = "#F7941F";
+    }
+    else if(result == 'Hazard'){
+        result_x = 10;
+        result_y = -170;
+        div.style.color = "#F7941F";
+    }
+    else if(result == 'Hole in One!'){
+        result_x = 12;
+        result_y = -330;
+        div.style.color = "#BF1D2D";
+    }
+    else if(result == 'Fairway'){
+        result_x = 10;
+        result_y = -300;
+        div.style.color = "#147FFF";
+    }
+
+    console.log(result);
+    gsap.to(".game-character", {duration: 0.8, x: result_x, y: result_y});
+
 </script>

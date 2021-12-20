@@ -28,10 +28,13 @@ def index(request):
         ranking = []
 
         for i in range(11):
-            No = i+1
-            Name = userscore_list[i][0]
-            Value = int(userscore_list[i][1])
-            ranking.append([No, Name, Value])
+            try:
+                No = i + 1
+                Name = userscore_list[i][0]
+                Value = int(userscore_list[i][1])
+                ranking.append([No, Name, Value])
+            except:
+                break
 
         result = {'ranking':ranking, 'name': name}
 
