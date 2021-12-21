@@ -42,17 +42,13 @@
 2. 가상 환경 
 python 3.8버전
 <pre>
-    -- 윈도우
-</pre>    
-<pre>    
+    -- 윈도우    
 python -m venv venv
 cd venv/Scripts
 activate
 </pre>
 <pre>
     -- 맥
-</pre>    
-<pre>
 Python -m venv venv
 Source venv/bin/activate
 </pre>
