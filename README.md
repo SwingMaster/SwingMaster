@@ -48,7 +48,9 @@ python -m venv venv
 cd venv/Scripts
 activate
 </pre>
+
     -- 맥
+    
 <pre>
 Python -m venv venv
 Source venv/bin/activate
