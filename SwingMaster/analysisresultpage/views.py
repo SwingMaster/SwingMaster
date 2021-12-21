@@ -15,7 +15,7 @@ def index(request):
         keyword = ["O.B.", "Bunker", "Hazard", "Hole in One!", "Fairway"]
 
         if views.score <= 65:
-            distance = 0
+            distance = random.randint(150, 169)
             idx = random.randint(0, 2)
             result = keyword[idx]
 
