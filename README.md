@@ -42,12 +42,12 @@
 2. 가상 환경 
 python 3.8버전
 
-윈도우
+-- 윈도우
 - python -m venv venv
 - cd venv/Scripts
 - activate
 
-맥
+-- 맥
 - Python -m venv venv
 - Source venv/bin/activate
 
