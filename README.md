@@ -43,21 +43,25 @@
 python 3.8버전
 
     -- 윈도우
-- python -m venv venv
-- cd venv/Scripts
-- activate
-
+<pre>    
+python -m venv venv
+cd venv/Scripts
+activate
+</pre>
     -- 맥
-- Python -m venv venv
-- Source venv/bin/activate
-
+<pre>
+Python -m venv venv
+Source venv/bin/activate
+</pre>
 3. 패키지 설치
-- pip install -r requirements.txt
-
+<pre>
+pip install -r requirements.txt
+</pre>
 4. 프로그램 실행 
-- cd SwingMaster/SwingMaster
-- python manage.py runserver
-
+<pre>
+cd SwingMaster/SwingMaster
+python manage.py runserver
+</pre>
 5. DB변경
 <pre>
 - SwingMaster > settings.py의 DATABASES 변경
@@ -68,10 +72,10 @@ DATABASES = {
     }
 }
 </pre>
-
+<pre>
 python manage.py makemigrations
 python manage.py migrate
-
+</pre>
 
 
 
