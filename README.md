@@ -41,23 +41,25 @@
 
 2. 가상 환경 
 python 3.8버전
-- 윈도우
-python -m venv venv
-cd venv/Scripts
-activate
 
-- 맥
-Python -m venv venv
-Source venv/bin/activate
+윈도우
+- python -m venv venv
+- cd venv/Scripts
+- activate
+
+맥
+- Python -m venv venv
+- Source venv/bin/activate
 
 3. 패키지 설치
-pip install -r requirements.txt
+- pip install -r requirements.txt
 
 4. 프로그램 실행 
-cd SwingMaster/SwingMaster
-python manage.py runserver
+- cd SwingMaster/SwingMaster
+- python manage.py runserver
 
 5. DB변경
+<pre>
 - SwingMaster > settings.py의 DATABASES 변경
 DATABASES = {
     'default': {
@@ -65,6 +67,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+</pre>
 
 python manage.py makemigrations
 python manage.py migrate
