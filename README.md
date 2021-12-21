@@ -38,7 +38,7 @@ Swing Master는 10초 안에 스윙을 분석해주는 골프 스윙 분석 서�
 
 ## 4. 사용 기술
 
-- Python 3.9
+- Python 3.8
 - Django 4.0
 - Beautifulsoup4 4.10.0
 - Mediapipe 0.8.9.1
