@@ -1,7 +1,7 @@
 # <img src="./SwingMaster/startpage/static/assets/img/logo1.png" alt="logo1" width="200px" height="200px">
 > AI기술을 활용하여 쉽고 간편하게 골프스윙 평가받고 점수 등을 기록하는 프로그램
-
-[Notion 바로가기](https://www.notion.so/Swing-Master-32d7d806556947e7b16510aecb629a32)
+> 
+<img src="https://t1.daumcdn.net/cfile/tistory/99058A425C35772D0A" alt="notion" width="20px" height="20px"> [Notion 바로가기](https://www.notion.so/Swing-Master-32d7d806556947e7b16510aecb629a32)
 
 ## 바로가기
 
