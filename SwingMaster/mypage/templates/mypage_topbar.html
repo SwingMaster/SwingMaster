@@ -8,9 +8,31 @@
 </div>
 <div class="white-blue-background">
     <div class="crown-box">
-        <img class="crown" src="../static/assets/img/rank5-1.png">
+        <img id="my-ranking-img" class="crown" src="../static/assets/img/rank1-1.png">
     </div>
     <span class="name-font">
         {{ nickname }}
     </span>
 </div>
+
+<script>
+    var img = document.getElementById("my-ranking-img");
+    score = "{{ mytear|safe }}";
+    score = Number(score)
+    if (score >= 90){
+        img.src = "../static/assets/img/rank5-1.png";
+    }
+    else if(score >= 80 & score < 90){
+        img.src = "../static/assets/img/rank4-1.png";
+    }
+    else if(score >= 70 & score < 80){
+        img.src = "../static/assets/img/rank3-1.png";
+    }
+    else if(score >= 60 & score < 70){
+        img.src = "../static/assets/img/rank2-1.png";
+    }
+    else{
+        img.src = "../static/assets/img/rank1-1.png";
+    }
+
+</script>

@@ -27,6 +27,14 @@ def index(request):
             except:
                 break
 
-        result = {'nickname': nickname, 'user_label': user_label, 'userscore_list': userscore_list}
+        mytear = 0
+        cnt = 0
+        for i in range(len(userscore_information)):
+            mytear += userscore_information[i].userscore_score
+            cnt += 1
+
+        mytear = int(mytear/cnt)
+
+        result = {'nickname': nickname, 'user_label': user_label, 'userscore_list': userscore_list, 'mytear': mytear}
 
         return render(request, 'mypage_base.html', result)

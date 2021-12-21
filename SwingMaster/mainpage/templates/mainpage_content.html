@@ -1,5 +1,5 @@
 <div class="rank">
-    <img class="crown" src="../static/assets/img/rank5-1.png">
+    <img id="main-ranking-img" class="crown" src="../static/assets/img/rank1-1.png">
     <h5>{{ name }}님</h5>
 </div>
 <table border="1" bordercolor="#E5E4E4" width="300px" height="300px" align="center" frame=void
@@ -15,3 +15,24 @@
     </tr>
     {% endfor %}
 </table>
+
+<script>
+    var img = document.getElementById("main-ranking-img");
+    score = "{{ mytear|safe }}";
+    score = Number(score)
+    if (score >= 90){
+        img.src = "../static/assets/img/rank5-1.png";
+    }
+    else if(score >= 80 & score < 90){
+        img.src = "../static/assets/img/rank4-1.png";
+    }
+    else if(score >= 70 & score < 80){
+        img.src = "../static/assets/img/rank3-1.png";
+    }
+    else if(score >= 60 & score < 70){
+        img.src = "../static/assets/img/rank2-1.png";
+    }
+    else{
+        img.src = "../static/assets/img/rank1-1.png";
+    }
+</script>

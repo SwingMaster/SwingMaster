@@ -36,7 +36,18 @@ def index(request):
             except:
                 break
 
-        result = {'ranking':ranking, 'name': name}
+        nickname = name.user_nickname
+        userscore_personerl_information = UserScore.objects.filter(userscore_nickname=nickname)
+
+        mytear = 0
+        cnt = 0
+        for i in range(len(userscore_personerl_information)):
+            mytear += userscore_personerl_information[i].userscore_score
+            cnt += 1
+
+        mytear = int(mytear / cnt)
+
+        result = {'ranking': ranking, 'name': name, 'mytear': mytear}
 
         return render(request, 'mainpage_base.html', result)
 
