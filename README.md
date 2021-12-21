@@ -17,7 +17,7 @@
 ## 1. 제작 기간 & 참여 인원
 
 - 2021년 11월 1일 ~ 12월 27일
-- 팀 프로젝트: 권지현, 박주환, 배병규, 전용우, 조재효
+- 팀 프로젝트: [권지현](https://github.com/Journey322), [박주환](https://github.com/zuani), [배병규](https://github.com/bbkyoo), [전용우](https://github.com/Scooterr101), [조재효](https://github.com/chojaehyo)
 
 
 
