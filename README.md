@@ -1,3 +1,8 @@
+#  Swing Master
+> AI기술을 활용하여 쉽고 간편하게 골프스윙 평가받고 점수 등을 기록하는 프로그램
+
+[Notion 바로가기](https://www.notion.so/Swing-Master-32d7d806556947e7b16510aecb629a32)
+
 ## 바로가기
 
 1. [제작 기간 & 참여 인원](#1-제작-기간--참여-인원)
