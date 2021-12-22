@@ -13,7 +13,8 @@
 6. [UI 프로토타입](#6-ui-프로토타입)
 7. [UML](#7-UML)
 8. [ERD](#8-ERD)
-9. [핵심 기능](#9-핵심-기능)
+9. [구현 화면](#9-구현-화면)
+10. [핵심 기능](#10-핵심-기능)
 
 
 <br/>
@@ -121,7 +122,17 @@ python manage.py migrate
 <br/>
 <br/>
 
-## 9. 핵심 기능
+## 9. 구현 화면
+
+![one](https://user-images.githubusercontent.com/66678112/147049009-49f674f2-fa13-4222-a1c3-e5d291374388.png)
+![two](https://user-images.githubusercontent.com/66678112/147049028-394dfb14-9beb-4538-aab0-ddbda6e1e2b3.png)
+
+
+<br/>
+<br/>
+
+
+## 10. 핵심 기능
 
 - 골프스윙을 촬영할 카메라 구현
 - 유저들의 골프스윙을 점수화
