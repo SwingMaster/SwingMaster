@@ -3,9 +3,6 @@
 > 
 <img src="https://t1.daumcdn.net/cfile/tistory/99058A425C35772D0A" alt="notion" width="20px" height="20px"> [Notion 바로가기](https://www.notion.so/Swing-Master-32d7d806556947e7b16510aecb629a32)
 
-<br/>
-<br/>
-
 ## 바로가기
 
 1. [제작 기간 & 참여 인원](#1-제작-기간--참여-인원)
