@@ -125,7 +125,7 @@ python manage.py migrate
 ## 9. 구현 화면
 
 ![one](https://user-images.githubusercontent.com/66678112/147049009-49f674f2-fa13-4222-a1c3-e5d291374388.png)
-![two](https://user-images.githubusercontent.com/66678112/147049028-394dfb14-9beb-4538-aab0-ddbda6e1e2b3.png)
+![two](https://user-images.githubusercontent.com/66678112/147049371-4eac1ca3-eb05-41d7-806b-eb8c1744fc23.png)
 
 
 <br/>
