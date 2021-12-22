@@ -11,7 +11,8 @@
 4. [사용 기술](#4-사용-기술)
 5. [설치 방법](#5-설치-방법)
 6. [UI 프로토타입](#6-ui-프로토타입)
-7. [핵심 기능](#7-핵심-기능)
+7. [UML](#7-UML)
+8. [핵심 기능](#8-핵심-기능)
 
 
 ## 1. 제작 기간 & 참여 인원
@@ -99,9 +100,12 @@ python manage.py migrate
 [Swing Master Design모음](https://www.notion.so/d9eb0ecd1f6f41d290618ffeb3978058?v=ee9d8f63e653440f9a79295bb22514a6)
 
 
+## 7. UML
+
+![2021105_유스케이스_V02-1 drawio (1)](https://user-images.githubusercontent.com/66678112/147046061-d352c1b4-1eca-4513-b7a2-fd3549bcb222.png)
 
 
-## 7. 핵심 기능
+## 8. 핵심 기능
 
 - 골프스윙을 촬영할 카메라 구현
 - 유저들의 골프스윙을 점수화
