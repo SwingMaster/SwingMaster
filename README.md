@@ -3,6 +3,9 @@
 > 
 <img src="https://t1.daumcdn.net/cfile/tistory/99058A425C35772D0A" alt="notion" width="20px" height="20px"> [Notion 바로가기](https://www.notion.so/Swing-Master-32d7d806556947e7b16510aecb629a32)
 
+<br/>
+<br/>
+
 ## 바로가기
 
 1. [제작 기간 & 참여 인원](#1-제작-기간--참여-인원)
@@ -14,6 +17,8 @@
 7. [UML](#7-UML)
 8. [핵심 기능](#8-핵심-기능)
 
+<br/>
+<br/>
 
 ## 1. 제작 기간 & 참여 인원
 
@@ -34,8 +39,8 @@ Swing Master는 10초 안에 스윙을 분석해주는 골프 스윙 분석 서�
 
 골프를 배우는 학습자가 증가하면서 소수 학습자들의 전유물에 불과하던 골프도 대중적인 스포츠로 자리잡게 되었다. 그러나 골프가 대중화 되었음에도 불구하고 비싼 수강료로 인해 지속적이고 깊이있는 학습으로 이어지지 못하고 중도에 포기하는 학습자들이 많다. 이러한 문제를 해결하기 위해 시중에 골프 독학을 위한 프로그램들이 제공되고 있으나 많은 기술들을 복합적으로 제공하여 아마추어 학습자들이 혼자 학습하기에 어려움을 겪고 있다. 아마추어 학습자들이 쉽게 학습을 포기하지 않고 지속적인 학습으로 이어지도록 돕기 위해 드라이버 스윙에 집중한 프로그램을 제공하기 위해 ‘Swing Master’를 개발하였다. 
 
-
-
+<br/>
+<br/>
 
 ## 4. 사용 기술
 
@@ -49,8 +54,8 @@ Swing Master는 10초 안에 스윙을 분석해주는 골프 스윙 분석 서�
 - Chart.js
 - JSP
 
-
-
+<br/>
+<br/>
 
 ## 5. 설치 방법
 
@@ -93,17 +98,22 @@ python manage.py makemigrations
 python manage.py migrate
 </pre>
 
-
+<br/>
+<br/>
 
 ## 6. UI 프로토타입
 
 [Swing Master Design모음](https://www.notion.so/d9eb0ecd1f6f41d290618ffeb3978058?v=ee9d8f63e653440f9a79295bb22514a6)
 
+<br/>
+<br/>
 
 ## 7. UML
 
 ![2021105_유스케이스_V02-1 drawio (1)](https://user-images.githubusercontent.com/66678112/147046061-d352c1b4-1eca-4513-b7a2-fd3549bcb222.png)
 
+<br/>
+<br/>
 
 ## 8. 핵심 기능
 
