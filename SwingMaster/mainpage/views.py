@@ -45,7 +45,10 @@ def index(request):
             mytear += userscore_personerl_information[i].userscore_score
             cnt += 1
 
-        mytear = int(mytear / cnt)
+        try:
+            mytear = int(mytear / cnt)
+        except:
+            pass
 
         result = {'ranking': ranking, 'name': name, 'mytear': mytear}
 

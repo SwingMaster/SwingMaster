@@ -39,6 +39,8 @@ class VideoCamera(object):
         self.mp_pose = mp.solutions.pose
         self.mp_drawing = mp.solutions.drawing_utils
         self.frame_size = (int(self.video.get(cv2.CAP_PROP_FRAME_WIDTH)), int(self.video.get(cv2.CAP_PROP_FRAME_HEIGHT)))
+        self.width = int(self.video.get(cv2.CAP_PROP_FRAME_WIDTH))
+        self.height = int(self.video.get(cv2.CAP_PROP_FRAME_HEIGHT))
         (self.grabbed, self.frame) = self.video.read()
 
         threading.Thread(target=self.update, args=(), daemon=True).start()
@@ -286,7 +288,7 @@ class VideoCamera(object):
 
             while True:
                 (self.ret, self.frame) = self.video.read()
-                cv2.rectangle(self.frame, (150, 0), (490, 470), color=(255, 255, 255), thickness=3)
+                cv2.rectangle(self.frame, (int(self.width*0.23), 0), (int(self.width*0.77), self.height), color=(255, 255, 255), thickness=3)
 
                 self.results = pose.process(self.frame)
 
